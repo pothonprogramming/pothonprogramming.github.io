@@ -2,8 +2,8 @@
   {
     "name":"Hello World",
     "note":"A simple hello world example",
-    "code":"",
-    "page":"001-hello-world/hello.html",
+    "path":"001-hello-world/",
+    "page":"hello.html",
     "vlog":"",
     "date":"2017-mm-dd",
     "tags":["JS"]
@@ -13,6 +13,7 @@
     "note":"Shows variable declaration in JavaScript",
     "path":"002-objects-and-vars/",
     "page":"objects.html",
+    "vlog":"",
     "date":"2017-mm-dd",
     "tags":["JS"]
   },
@@ -21,6 +22,7 @@
     "note":"Shows basic class inheritance",
     "path":"003-inheritance/",
     "page":"inheritance.html",
+    "vlog":"",
     "date":"2017-mm-dd",
     "tags":["inheritance","JS"]
   },
@@ -29,6 +31,7 @@
     "note":"Shows prototype inheritance in JS",
     "path":"004-prototype-inheritance/",
     "page":"prototype-inheritance.html",
+    "vlog":"",
     "date":"2017-mm-dd",
     "tags":["inheritance","JS"]
   },
@@ -37,12 +40,14 @@
     "note":"Shows one way to approach multiple inheritance. I later discovered that this approach copies all parent properties, which is different from true inheritance. True inheritance uses the same properties rather than cloning them. I have still found this to be a useful technique that achieves a similar effect.",
     "path":"005-multiple-inheritance/",
     "page":"multiple-inheritance.html",
+    "vlog":"",
     "date":"2017-mm-dd",
     "tags":["inheritance","JS"]
   },
   {
     "name":"Elements",
     "note":"Working with HTML elements.",
+    "code":"",
     "path":"",
     "page":"",
     "date":"2017-mm-dd",

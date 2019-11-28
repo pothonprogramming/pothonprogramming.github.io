@@ -19,7 +19,8 @@
       var example_fragment = document.importNode(html.example_template.content, true);
       var example_element  = example_fragment.children[0];
 
-      example_element.children[0].innerText = example_data.name;
+      example_element.querySelector(".example-name").innerText = example_data.name;
+      example_element.querySelector(".example-page-link").href = example_data.page;
 
       html.example_container.appendChild(example_element);
 
