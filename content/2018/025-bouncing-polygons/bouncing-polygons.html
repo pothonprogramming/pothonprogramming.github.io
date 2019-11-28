@@ -1,0 +1,547 @@
+<!DOCTYPE HTML>
+
+<html>
+
+  <head>
+
+    <meta name = "description" content = "Get the bounding rectangle of an arbitrary polygon.">
+    <meta name = "viewport" content = "width=device-width, user-scalable=no">
+
+    <title>Bouncing Polygons</title>
+
+    <style>
+
+      * { box-sizing:border-box; margin:0; overflow:hidden; padding:0; pointer-events:none; }
+
+      body, html { height:100%; width:100%; }
+
+      body { background-color:#202830; display:grid; }
+
+      canvas { align-self:center; display:grid; justify-self:center; }
+    
+    </style>
+
+  </head>
+
+  <body>
+
+    <canvas></canvas>
+
+    <script type = "text/javascript">
+    
+        /////////////////
+       //// CLASSES ////
+      /////////////////
+
+      /* The bottom boundary will be used to show how useful it is to know how to get the farthest point along a given direction vector. The polygons will be able to collide with this non-axis aligned surface with pixel perfect precision. */
+      class BottomBoundary {
+
+        constructor() {
+
+          this.line_segment = new LineSegment2D(0, 0, 0, 0, 0, 0); // The top surface
+          this.minimum_y = undefined; // The highest the points on the segment can go.
+          this.middle_y  = undefined; // The middle of the two points on the segment
+          this.maximum_y = undefined; // The lowest the points on the segment can go.
+          this.tilt_speed = 0.25;
+
+        }
+
+        /* Tilt the line segment between minimum and maximum y. */
+        update() {
+
+          this.line_segment.point0.y += this.tilt_speed;
+          this.line_segment.point1.y = this.middle_y - this.line_segment.point0.y + this.middle_y;
+
+          if (this.line_segment.point0.y < this.minimum_y) {
+
+            this.line_segment.point0.y = this.minimum_y;
+            this.tilt_speed = -this.tilt_speed;
+
+          } else if (this.line_segment.point0.y > this.maximum_y) {
+
+            this.line_segment.point0.y = this.maximum_y;
+            this.tilt_speed = -this.tilt_speed;
+
+          }
+
+        }
+
+      }
+
+      /* This line segment class will be used to make the bottom_boundary object. It's also a nice simple line segment class if you want to use it. */
+      class LineSegment2D {
+
+        constructor(x, y, x0, y0, x1, y1) {
+
+          this.position = new Point2D(x, y);
+
+          this.point0 = new Point2D(x0, y0);
+          this.point1 = new Point2D(x1, y1);
+
+        }
+
+      }
+
+      class Point2D {
+
+        constructor(x, y) {
+
+          this.x = x; this.y = y;
+
+        }
+
+        /* Moves the point to the specified x and y coordinates. */
+        setPosition(x, y) {
+
+          this.x = x; this.y = y;
+
+        }
+
+      }
+
+      class Polygon2D {
+
+        constructor(x, y, ...vertices) {
+          
+          this.position = new Point2D(x, y);
+          this.rotation = 0;
+          this.scale = 1;
+          this.vertices = new Array(); // points in the polygon
+
+          /* Have some extra values to make the polygons move around. */
+          this.direction = Math.random() * Math.PI * 2;
+          this.speed     = Math.random() * 2 + 1;
+          this.rotational_velocity = Math.random() * 0.05 - 0.025;
+
+          for (let index = vertices.length - 2; index > -1; index -= 2) {
+
+            this.vertices[index * 0.5] = new Point2D(vertices[index], vertices[index + 1]);
+
+          }
+        
+        }
+
+        /* Get the y value of the point in the polygon that is farthest down on the y axis. */
+        getBottom() {
+
+          var vertex = this.vertices[0];
+          var bottom = vertex.y;
+
+          for (let index = this.vertices.length - 1; index > 0; -- index) {
+
+            vertex = this.vertices[index];
+
+            if (vertex.y > bottom) bottom = vertex.y;
+
+          } return bottom;
+
+        }
+
+        /* Get the x value of the point in the polygon that is farthest left on the x axis. */
+        getLeft() {
+
+          var vertex = this.vertices[0];
+          var left   = vertex.x;
+
+          for (let index = this.vertices.length - 1; index > 0; -- index) {
+
+            vertex = this.vertices[index];
+
+            if (vertex.x < left) left = vertex.x;
+
+          } return left;
+
+        }
+
+        /* Get the point in the polygon that is farthest along the given vector. */
+        getFarthestPoint(vector_x, vector_y) {
+
+          var vertex        = this.vertices[0]; // Start with one of the vertices
+          var dot_product   = vertex.x * vector_x + vertex.y * vector_y; // Dot product is used to determine how far along the vector this point is. The bigger dot product is, the farther along the vector the point is.
+          var farthest_point = new Point2D(vertex.x, vertex.y); // Since we have only checked one point so far, we can assume it is the farthest along the vector.
+
+          // loop through all points except for the one we already checked.
+          for (let index = this.vertices.length - 1; index > 0; -- index) {
+
+            vertex = this.vertices[index];
+
+            let test_dot_product = vertex.x * vector_x + vertex.y * vector_y;
+
+            // if the test dot product is bigger than the one for the last point we checked, we know this point is farther along the vector.
+            if (test_dot_product > dot_product) {
+
+              dot_product = test_dot_product; // set up for next iteration
+              farthest_point.x = vertex.x; // set up our new farthest point
+              farthest_point.y = vertex.y;
+
+            }
+
+          } return farthest_point;
+
+        }
+
+        /* Get the x value of the point in the polygon that is farthest right on the x axis. */
+        getRight() {
+
+          var vertex = this.vertices[0];
+          var right  = vertex.x;
+
+          for (let index = this.vertices.length - 1; index > 0; -- index) {
+
+            vertex = this.vertices[index];
+
+            if (vertex.x > right) right = vertex.x;
+
+          } return right;
+
+        }
+
+        /* Get the y value of the point in the polygon that is farthest up on the y axis. */
+        getTop() {
+
+          var vertex = this.vertices[0];
+          var top    = vertex.y;
+
+          for (let index = this.vertices.length - 1; index > 0; -- index) {
+
+            vertex = this.vertices[index];
+
+            if (vertex.y < top) top = vertex.y;
+
+          } return top;
+
+        }
+
+        setPosition(x, y) {
+
+          var vector_x = x - this.position.x;
+          var vector_y = y - this.position.y;
+
+          for (let index = this.vertices.length - 1; index > -1; -- index) {
+
+            let vertex = this.vertices[index];
+            
+            vertex.x += vector_x;
+            vertex.y += vector_y;
+
+          }
+
+          this.position.x += vector_x;
+          this.position.y += vector_y;
+
+        }
+
+        /* This just adds x and y to every point in the polygon as well as to its position. It's the equivalent of a slide function. */
+        setPositionPlus(x, y) {
+
+          for (let index = this.vertices.length - 1; index > -1; -- index) {
+
+            let vertex = this.vertices[index];
+
+            vertex.x += x;
+            vertex.y += y;
+
+          }
+
+          this.position.x += x;
+          this.position.y += y;
+
+        }
+
+        setRotation(rotation) {
+
+          var radians = rotation - this.rotation;
+          var unit_x = Math.cos(radians);
+          var unit_y = Math.sin(radians);
+
+          for (let index = this.vertices.length - 1; index > -1; -- index) {
+
+            let vertex = this.vertices[index];
+            
+            let vector_x = vertex.x - this.position.x;
+            let vector_y = vertex.y - this.position.y;
+
+            vertex.x = vector_x * unit_x - vector_y * unit_y + this.position.x;
+            vertex.y = vector_x * unit_y + vector_y * unit_x + this.position.y;
+
+          }
+
+          this.rotation = rotation;
+
+        }
+
+        setScale(scale) {
+
+          var ratio = scale / this.scale;
+
+          for (let index = this.vertices.length - 1; index > -1; -- index) {
+
+            let vertex = this.vertices[index];
+
+            let vector_x = vertex.x - this.position.x;
+            let vector_y = vertex.y - this.position.y;
+
+            vertex.x = vector_x * ratio + this.position.x;
+            vertex.y = vector_y * ratio + this.position.y;
+
+          }
+
+          this.scale = scale;
+
+        }
+
+        update() {
+
+          this.setPositionPlus(Math.cos(this.direction) * this.speed, Math.sin(this.direction) * this.speed);
+
+        }
+
+      }
+
+      /* This is the same as the Point2D class except it has vector math functionality in its prototype. */
+      class Vector2D {
+
+        constructor(x, y) {
+
+          this.x = x; this.y = y;
+
+        }
+
+        /* Returns a vector that runs from point0 to point1. */
+        static fromPoints(point0, point1) {
+
+          return new Vector2D(point1.x - point0.x, point1.y - point0.y);
+
+        }
+
+        /* Clones the parameter vector. */
+        static fromVector(vector2d) {
+
+          return new Vector2D(vector2d.x, vector2d.y);
+
+        }
+
+        /* This tells us if a vector is to the left or right of another vector by returning a positive number if it is to the left of the other vector and a negative number if it is to the right of the other vector. */
+        getCrossProduct(vector2d) {
+
+          return this.x * vector2d.y - this.y * vector2d.x;
+
+        }
+
+        /* We don't use this, but I figured I'd leave it in for reference. */
+        toLeftNormal() {
+
+          var x = this.x;
+
+          this.x = this.y;
+          this.y = -x;
+
+        }
+
+        /* Imaging taking a vector and rotating it 90 degrees clockwise. That is essentially what this function does. toLeftNormal turns a vector 90 degrees counter-clockwise. */
+        toRightNormal() {
+          
+          var x = this.x;
+
+          this.x = -this.y;
+          this.y = x;
+
+        }
+
+      }
+
+        ///////////////////
+       //// VARIABLES ////
+      ///////////////////
+
+      var context = document.querySelector("canvas").getContext("2d", { alpha:false });
+
+      var polygons = [new Polygon2D(0, 0, 0, -1, 1, 0, 0.5, 0, 0.5, 1, -0.5, 1, -0.5, 0, -1, 0),
+                  new Polygon2D(0, 0, -0.25, -1, -0.25, -0.25, 1, -0.25, 0.25, 1, 0.25, 0.25, -1, 0.25),
+                  new Polygon2D(0, 0, -1, 0, -0.5, -0.75, 0.5, -0.75, 1, 0, 0.5, 0.75, -0.5, 0.75),
+                  new Polygon2D(0, -0.25, -1, -0.5, 0, -1.5, 1, -0.5, 0.75, 0.75, -0.75, 0.75),
+                  new Polygon2D(0, 0, -1, -1, 1, -1, 1, 1, -1, 1),
+                  new Polygon2D(0, 0.25, 0, -1, 1, 1, -1, 1)];
+
+      var bottom_boundary = new BottomBoundary();
+
+
+        ///////////////////
+       //// FUNCTIONS ////
+      ///////////////////
+
+      /* Essentially what is happening here is we're getting the vector of the line segment, ab. Then we're getting the right hand normal, abn, of the line segment. Then we're using the normal to find c, which is the point on the polygon that penetrates deepest below the line segment along the normal, abn. Once we have c we can find the vector from c to a, vector ca. We will test the cross product of ca and ab to determine if c has in fact penetrated below the line segment. If it has, then we must find the penetration vector, cd, that lies along abn and move the polygon back by its amount to resolve collision. */
+      function collideBottomBoundary(polygon) {
+
+        var ab = Vector2D.fromPoints(bottom_boundary.line_segment.point0, bottom_boundary.line_segment.point1);// ab = segment vector
+        
+        var abn = Vector2D.fromVector(ab); // clone ab
+        abn.toRightNormal(); // convert it to the right hand normal
+
+        var c = polygon.getFarthestPoint(abn.x, abn.y);
+
+        var ca = Vector2D.fromPoints(c, bottom_boundary.line_segment.point0);
+
+        if (ca.getCrossProduct(ab) > 0) { // c is below the line segment!
+
+          // This equation to find the factor will help us find cd.
+          var factor = (-ab.x * ca.x - ab.y * ca.y) / (ab.x * ab.x + ab.y * ab.y);
+
+          var cd = new Vector2D(ca.x + factor * ab.x, ca.y + factor * ab.y);
+
+          polygon.setPositionPlus(cd.x, cd.y); // move c to d along with the rest of the polygon.
+          polygon.direction = Math.atan2(Math.sin(polygon.direction) * -1, Math.cos(polygon.direction)); // reverse the polygon's direction on the y axis.
+
+        }        
+
+      }
+
+      /* What is happening here is we are getting the farthest points in the polygon in axis aligned directions. Then we are checking to see if those farthest points are beyond the limits of the boundary. If they are, we move the polygon back. */
+      function collideRectangularContainer(polygon, left, right, top) {
+
+        var polygon_left   = polygon.getLeft();
+        var polygon_right  = polygon.getRight();
+        var polygon_top    = polygon.getTop();
+
+        if (polygon_left < left) {
+
+          polygon.setPositionPlus(left - polygon_left, 0);
+          polygon.direction = Math.atan2(Math.sin(polygon.direction), Math.cos(polygon.direction) * -1);
+
+        } else if (polygon_right > right) {
+
+          polygon.setPositionPlus(right - polygon_right, 0);
+          polygon.direction = Math.atan2(Math.sin(polygon.direction), Math.cos(polygon.direction) * -1);
+
+        }
+
+        if (polygon_top < top) {
+
+          polygon.setPositionPlus(0, top - polygon_top);
+          polygon.direction = Math.atan2(Math.sin(polygon.direction) * -1, Math.cos(polygon.direction));
+
+        }
+
+        // No need for bottom collision because of the bottom boundary.
+
+      }
+
+      function drawBottomBoundary(color) {
+
+        context.beginPath();
+        context.moveTo(bottom_boundary.line_segment.point0.x, bottom_boundary.line_segment.point0.y);
+        context.lineTo(bottom_boundary.line_segment.point1.x, bottom_boundary.line_segment.point1.y);
+        context.lineTo(context.canvas.width, context.canvas.height);
+        context.lineTo(0, context.canvas.height);
+
+        context.fillStyle = color;
+        context.fill();
+
+      }
+
+      function drawPolygon2D(polygon2d, color) {
+
+        var vertex = polygon2d.vertices[0];
+
+        context.beginPath();
+        context.moveTo(vertex.x, vertex.y);
+
+        for (let index = polygon2d.vertices.length - 1; index > 0; -- index) {
+
+          vertex = polygon2d.vertices[index];
+          context.lineTo(vertex.x, vertex.y);
+
+        }
+
+        context.fillStyle = color;
+        context.fill();
+
+      }
+
+      function loop(time_stamp) {
+
+        window.requestAnimationFrame(loop);
+
+        context.fillStyle = "#c0f0d8";
+        context.fillRect(0, 0, context.canvas.width, context.canvas.height);
+
+        bottom_boundary.update();
+
+        drawBottomBoundary("rgba(0,128,256,0.75");
+
+        for (let index = polygons.length - 1; index > -1; -- index) {
+
+          var polygon = polygons[index];
+
+          polygon.update();
+          polygon.setRotation(polygon.rotation + polygon.rotational_velocity);
+
+          collideRectangularContainer(polygon, 0, context.canvas.width, 0);
+
+          collideBottomBoundary(polygon);
+
+          drawPolygon2D(polygon, "rgba(0,128,256,0.75)");
+
+        }
+
+        // Draw an Axis Aligned bounding box
+        context.beginPath();
+        context.rect(polygon.getLeft(), polygon.getTop(), polygon.getRight() - polygon.getLeft(), polygon.getBottom() - polygon.getTop());
+        context.strokeStyle = "rgba(0,128,256,0.75)";
+        context.stroke();
+
+      }
+
+        /////////////////////////
+       //// EVENT LISTENERS ////
+      /////////////////////////
+
+      function resize(event) {
+
+        context.canvas.height = document.documentElement.clientHeight - 16;
+        context.canvas.width = document.documentElement.clientWidth - 16;
+
+        context.imageSmoothingEnabled = false;
+
+        bottom_boundary.middle_y = context.canvas.height * 0.8;
+        bottom_boundary.minimum_y = context.canvas.height * 0.6;
+        bottom_boundary.maximum_y = context.canvas.height;
+        bottom_boundary.line_segment.point0.setPosition(0, bottom_boundary.middle_y);
+        bottom_boundary.line_segment.point1.setPosition(context.canvas.width, bottom_boundary.middle_y);
+
+      }
+
+        ////////////////////
+       //// INITIALIZE ////
+      ////////////////////
+
+      window.addEventListener("resize", resize);
+
+      resize();
+
+      /* Move the polygons to the middle of the canvas and resize them. */
+      for (let index = polygons.length - 1; index > -1; -- index) {
+
+        let polygon = polygons[index];
+
+        polygon.setPosition(context.canvas.width * 0.5, context.canvas.height * 0.5);
+        polygon.setScale(Math.floor(Math.random() * 30) + 20);
+
+      }
+
+      /* Randomly sort the array of polygons so a different polygon can be drawn with a bounding box each time the program runs. */
+      for (let index = polygons.length - 1; index > -1; -- index) {
+
+        let polygon = polygons.pop();
+
+        polygons.splice(Math.floor(Math.random() * polygons.length - 1), 0, polygon);
+        
+      }
+
+      loop(); // start the game loop.
+
+    </script>
+
+  </body>
+
+</html>

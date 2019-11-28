@@ -1,0 +1,29 @@
+{
+
+  "author": "PoP Vlog",
+  "background_color": "#000000",
+  "description": "A simple Progressive Web Application",
+  "display": "fullscreen",
+
+  "icons": [
+
+    {
+
+      "src": "web-app.png",
+      "sizes": "192x192",
+      "type": "image/png"
+
+    }
+
+  ],
+
+  "lang": "en-US",
+  "name": "Offline Web App",
+  "orientation": "portrait",
+  "scope": "./",
+  "short_name": "Web App",
+  "start_url": "web-app.html",
+  "theme_color": "#0099ff",
+  "version": "0.2"
+
+}

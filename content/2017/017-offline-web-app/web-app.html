@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+
+    <meta charset = "utf-8">
+    <title>Web App</title>
+    <meta name = "description" content = "A simple web app.">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1">
+    <meta name = "application-name" content = "Web App">
+    <link href = "manifest.json" rel = "manifest">
+    <link href = "web-app.png" rel = "icon" type = "image/png">
+    <link href = "web-app.css" rel = "stylesheet" type = "text/css">
+
+  </head>
+
+  <body>
+
+    <h1>Offline Android Web App!</h1>
+
+    <img src = "web-app.png">
+
+    <p>If you are viewing this app in full screen mode, you are witnessing a Progressive Web App. This app should meet the requirements to be installed to Android devices with the Add To Home Screen feature in Chrome browsers. It also tries to register a service worker which will cache files in the browser cache for use in offline mode!</p>
+
+    <script type = "text/javascript">
+
+      if ("serviceWorker" in navigator) {
+
+        navigator.serviceWorker.register("./web-app-service.js", { scope: "./" }).then(function(registration) {
+
+        }).catch(function(error) {
+
+          alert("Could not register service worker! This application will not be able to run in offline mode.");
+          alert(error);
+
+        });
+
+      }
+
+    </script>
+
+  </body>
+
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+
+    <meta name = "viewport" content = "width=device-width">
+
+    <style>
+
+      * { margin:0; padding:0; overflow:hidden; }
+
+      html, body { height:100%; width:100%; }
+
+      body { background-color:#ffffff; display:grid; }
+
+      canvas { align-self:center; justify-self:center; }
+
+    </style>
+
+  </head>
+
+  <body>
+
+    <canvas></canvas>
+
+    <script type = "text/javascript">
+
+      class Rectangle {
+
+        constructor (x, y, w, h) {
+
+          this.x = x; this.y = y; this.w = w; this.h = h;
+
+        }
+
+        get cx() { return this.x + this.w * 0.5; }
+        get cy() { return this.y + this.h * 0.5; }
+
+        collideRectangle(rect) {
+
+          var dx = rect.cx - this.cx;// x difference between centers
+          var dy = rect.cy - this.cy;// y difference between centers
+          var aw = (rect.w + this.w) * 0.5;// average width
+          var ah = (rect.h + this.h) * 0.5;// average height
+
+          /* If either distance is greater than the average dimension there is no collision. */
+          if (Math.abs(dx) > aw || Math.abs(dy) > ah) return false;
+
+          /* To determine which region of this rectangle the rect's center
+          point is in, we have to account for the scale of the this rectangle.
+          To do that, we divide dx and dy by it's width and height respectively. */
+          if (Math.abs(dx / this.w) > Math.abs(dy / this.h)) {
+
+            if (dx < 0) rect.x = this.x - rect.w;// left
+            else rect.x = this.x + this.w; // right
+
+          } else {
+
+            if (dy < 0) rect.y = this.y - rect.h; // top
+            else rect.y = this.y + this.h; // bottom
+
+          }
+
+          return true;
+
+        }
+
+      }
+
+      var context = document.querySelector("canvas").getContext("2d");
+
+      var p = document.querySelector("p");
+
+      var screen_h = document.documentElement.clientHeight;
+      var screen_w = document.documentElement.clientWidth;
+
+      var r1 = new Rectangle(100, 100, Math.round(Math.random() * 100 + 50), Math.round(Math.random() * 100 + 50));
+      var r2 = new Rectangle(100, 100, Math.round(Math.random() * 100 + 50), Math.round(Math.random() * 100 + 50));
+
+      var pointer = { x:0, y:0 };
+
+      function loop() {
+
+        window.requestAnimationFrame(loop);
+
+        screen_h = document.documentElement.clientHeight - 16;
+        screen_w = document.documentElement.clientWidth - 16;
+
+        context.canvas.height = screen_h;
+        context.canvas.width = screen_w;
+
+        context.fillStyle = "#202830";
+        context.fillRect(0, 0, screen_w, screen_h);
+
+        r1.x = screen_w * 0.5 - r1.w * 0.5;
+        r1.y = screen_h * 0.5 - r1.h * 0.5;
+
+        r2.x = pointer.x - r2.w * 0.5;
+        r2.y = pointer.y - r2.h * 0.5;
+
+        context.fillStyle = "#ffffff";
+        context.fillRect(r1.x, r1.y, r1.w, r1.h);
+
+        var collision = false;
+        if (r1.collideRectangle(r2)) collision = true;
+
+        context.fillStyle = "#ff0000";
+        context.fillRect(r2.x, r2.y , r2.w, r2.h);
+
+        if (collision) {
+
+          context.strokeStyle = "#800000";
+          context.rect(pointer.x - r2.w * 0.5, pointer.y - r2.h * 0.5, r2.w, r2.h);
+          context.stroke();
+
+          context.strokeStyle = "#800000";
+          context.moveTo(r1.cx, r1.cy);
+          context.lineTo(pointer.x, pointer.y);
+          context.stroke();
+
+          context.strokeStyle = "#808080";
+          context.beginPath();
+          context.moveTo(r1.x, r1.y);
+          context.lineTo(r1.x + r1.w, r1.y + r1.h);
+          context.stroke();
+          context.moveTo(r1.x + r1.w, r1.y);
+          context.lineTo(r1.x, r1.y + r1.h);
+          context.stroke();
+
+        }
+
+      }
+
+      loop();
+
+      window.addEventListener("mousemove", function(event) {
+
+        var rect = context.canvas.getBoundingClientRect();
+
+        pointer.x = event.clientX - rect.left;
+        pointer.y = event.clientY - rect.top;
+
+      });
+
+      var offset_x = offset_y = 0;
+
+      window.addEventListener("touchstart", function(event) {
+
+        var rect = context.canvas.getBoundingClientRect();
+
+        offset_x = event.targetTouches[0].clientX - rect.left - r2.cx;
+        offset_y = event.targetTouches[0].clientY - rect.top - r2.cy;
+
+      });
+
+      window.addEventListener("touchmove", function(event) {
+
+        var rect = context.canvas.getBoundingClientRect();
+
+        pointer.x = event.targetTouches[0].clientX - rect.left - offset_x;
+        pointer.y = event.targetTouches[0].clientY - rect.top - offset_y;
+
+      });
+
+      window.addEventListener("click", function(event) {
+
+        r1.h = Math.round(Math.random() * 100 + 50);
+        r1.w = Math.round(Math.random() * 100 + 50);
+        r2.h = Math.round(Math.random() * 100 + 50);
+        r2.w = Math.round(Math.random() * 100 + 50);
+
+      });
+
+    </script>
+
+  </body>
+
+</html>

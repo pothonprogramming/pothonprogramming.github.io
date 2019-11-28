@@ -1,0 +1,17 @@
+/* Frank Poth 2019-11-25 */
+
+* { margin:0; padding:0; }
+
+#filter-button {
+
+  background-color:rgba(0, 0, 0, 0.1);
+  border-radius:8px;
+  cursor:pointer;
+
+}
+
+[contenteditable=true]:empty:before {
+
+  content:attr(data-placeholder);
+
+}

@@ -1,0 +1,30 @@
+INTRO
+
+Hey, guys, my name is Frank and THIS is the Poth on Programming Video Log Part 6
+of how to make a tile based platformer in pure HTML5 and JavaScript.
+
+This video is going to be about loading JSON levels with doors. You're definitely
+going to want this functionality in your game so stay tuned to find out how it's done!
+
+BULLETS
+
+1. Example overview
+
+2. Create JSON files
+
+3. loading JSON files and using it
+  a. initial load
+  b. world.setup
+  c. loading levels from update
+
+4. trigger a level load by hitting a door
+  a. hit door check in the update function
+  b. setup loads the world and moves the player.
+
+  In this video I'm going to show you how to create level data files using JSON,
+  how to load level data and use it to populate the game world, and finally,
+  how to trigger subsequent level loads by colliding with doors.
+
+  If you have any comments or questions, be sure to leave them in the comments
+  section, and if you start learning at any point during this video, go ahead and
+  give a thumbs up so others can find it as well.
