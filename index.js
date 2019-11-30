@@ -20,7 +20,9 @@
       var example_element  = example_fragment.children[0];
 
       example_element.querySelector(".example-name").innerText = example_data.name;
-      example_element.querySelector(".example-page-link").href = example_data.page;
+      example_element.querySelector(".example-code-link").href = "https://github.com/pothonprogramming/pothonprogramming.github.io/tree/master/content/" + example_data.path;
+      example_element.querySelector(".example-page-link").href = "content/" + example_data.path + "/" + example_data.page + ".html";
+      example_element.querySelector(".example-vlog-link").href = "https://www.youtube.com/watch?v=" + example_data.vlog;
 
       html.example_container.appendChild(example_element);
 

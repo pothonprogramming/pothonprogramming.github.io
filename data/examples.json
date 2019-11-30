@@ -1,56 +1,497 @@
 [
   {
-    "name":"Hello World",
-    "note":"A simple hello world example",
-    "path":"001-hello-world/",
-    "page":"hello.html",
+    "name":"Bouncing Polygons",
+    "note":"",
+    "path":"bouncing-polygons",
+    "page":"bouncing-polygons",
+    "vlog":"Newm6jnp7T0",
+    "date":"2018-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Polygon Basics",
+    "note":"",
+    "path":"polygon",
+    "page":"polygon",
+    "vlog":"3kICmEJ-xyo",
+    "date":"2018-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"GJK Collision",
+    "note":"There is no video for this project (yet).",
+    "path":"gjk",
+    "page":"gjk",
     "vlog":"",
+    "date":"2018-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Polygon Rotation",
+    "note":"There is no video for this project.",
+    "path":"polygon-rotation",
+    "page":"polygon-rotation",
+    "vlog":"",
+    "date":"2018-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Hitbox",
+    "note":"",
+    "path":"hitbox",
+    "page":"hitbox",
+    "vlog":"VpSWuywFlC8",
+    "date":"2018-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Vector Math",
+    "note":"",
+    "path":"vector-math",
+    "page":"vector-math",
+    "vlog":"b5TjpTBW6yw",
+    "date":"2018-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Particle Pool",
+    "note":"",
+    "path":"particle-pool",
+    "page":"particle-pool",
+    "vlog":"9dp0mAc2vvY",
+    "date":"2018-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Simple Inventory",
+    "note":"",
+    "path":"inventory",
+    "page":"inventory",
+    "vlog":"AKJMf73H1Jc",
+    "date":"2018-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Tile Animation",
+    "note":"",
+    "path":"tile-animation",
+    "page":"tile-animation",
+    "vlog":"AQABpi9nLfU",
+    "date":"2018-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Rectangle Collision",
+    "note":"",
+    "path":"rectangle-collision",
+    "page":"rectangle-collision",
+    "vlog":"LYrge3ylccQ",
+    "date":"2018-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Moving Platforms",
+    "note":"",
+    "path":"platform",
+    "page":"platform",
+    "vlog":"1eHAFNUPlk8",
+    "date":"2018-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Platformer AI",
+    "note":"",
+    "path":"platformer-ai",
+    "page":"platformer-ai",
+    "vlog":"zbqwFb8DJgQ",
+    "date":"2018-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Shoot",
+    "note":"",
+    "path":"shoot",
+    "page":"shoot",
+    "vlog":"WML5a8QRtnw",
+    "date":"2018-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Scrolling Tile Background",
+    "note":"",
+    "path":"tile-scroll",
+    "page":"tile-scroll",
+    "vlog":"jabYMh9sI8Q",
+    "date":"2018-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"3D Cube",
+    "note":"",
+    "path":"cube",
+    "page":"cube",
+    "vlog":"OVQxTNd2U3w",
+    "date":"2018-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Pseudo 3D Starfield",
+    "note":"",
+    "path":"starfield",
+    "page":"starfield",
+    "vlog":"jtWvkNK2LVo",
+    "date":"2018-mm-dd",
+    "tags":["3D"]
+  },
+  {
+    "name":"Bouncing Balls",
+    "note":"",
+    "path":"wmw-bouncing-balls",
+    "page":"bouncing-balls",
+    "vlog":"hoWjnidQOms",
+    "date":"2018-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Basic HTML Layout",
+    "note":"",
+    "path":"wmw-basic",
+    "page":"basic",
+    "vlog":"hm7py_lZkL8",
+    "date":"2018-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Circle Collision Response",
+    "note":"",
+    "path":"circle-collision-response",
+    "page":"circle-collision-response",
+    "vlog":"nlwtgvZCz0k",
+    "date":"2018-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Circle Collision Detection",
+    "note":"",
+    "path":"circle-collision-detection",
+    "page":"circle-collision-detection",
+    "vlog":"STcP9P122_8",
+    "date":"2018-mm-dd",
+    "tags":["collision"]
+  },
+  {
+    "name":"Input Processing Output (IPO)",
+    "note":"",
+    "path":"ipo",
+    "page":"ipo",
+    "vlog":"PFd8Xw5C6Zs",
+    "date":"2018-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Rabbit Trap",
+    "note":"",
+    "path":"rabbit-trap",
+    "page":"rabbit-trap",
+    "vlog":"opiWzi0KWjs",
+    "date":"2018-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Pre-Scale Performance",
+    "note":"",
+    "path":"pre-scale-performance",
+    "page":"pre-scale-performance",
+    "vlog":"hQD4Yw3IyZ0",
+    "date":"2018-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Tile Graphics",
+    "note":"",
+    "path":"tile-graphics",
+    "page":"tile-graphics",
+    "vlog":"XELyA6ECDLk",
+    "date":"2018-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Pagination",
+    "note":"",
+    "path":"pagination",
+    "page":"pagination",
+    "vlog":"7TSVnm5Fpj0",
+    "date":"2018-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Dominique's Doors",
+    "note":"",
+    "path":"dominiques-doors",
+    "page":"dominiques-doors",
+    "vlog":"96Q200cPFss",
+    "date":"2018-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"JSON",
+    "note":"",
+    "path":"json",
+    "page":"json",
+    "vlog":"jRuz3bXBDKc",
+    "date":"2018-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Calculator",
+    "note":"",
+    "path":"028-calculator",
+    "page":"calculator",
+    "vlog":"ySB3YlKqQLA",
+    "date":"2017-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Blit",
+    "note":"",
+    "path":"027-blit",
+    "page":"blit",
+    "vlog":"sKf2vJBiBj0",
+    "date":"2017-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Dino Run",
+    "note":"",
+    "path":"026-dino",
+    "page":"dino",
+    "vlog":"LZ0w3HAQKWU",
+    "date":"2017-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Sprite Animation",
+    "note":"",
+    "path":"025-animation",
+    "page":"animation",
+    "vlog":"5GxoVaO58NM",
+    "date":"2017-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Load Image",
+    "note":"",
+    "path":"024-load-image",
+    "page":"load-image",
+    "vlog":"cbBXjqaCzbs",
+    "date":"2017-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Tile Types",
+    "note":"",
+    "path":"023-tile-types",
+    "page":"tile-types",
+    "vlog":"zRO6Q8VcHNE",
+    "date":"2017-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Snake",
+    "note":"",
+    "path":"022-snake",
+    "page":"snake",
+    "vlog":"pxBW6FZglrI",
+    "date":"2017-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Top Down Tiles",
+    "note":"",
+    "path":"021-top-down-tiles",
+    "page":"top-down-tiles",
+    "vlog":"nPVWL6RlJPE",
+    "date":"2017-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Hit The Wall",
+    "note":"",
+    "path":"020-hit-the-wall",
+    "page":"hit-the-wall",
+    "vlog":"r-Y-N4cLd10",
+    "date":"2017-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Walk On Tiles",
+    "note":"",
+    "path":"019-walk-on-tiles",
+    "page":"walk-on-tiles",
+    "vlog":"GN2Eh7UauwU",
+    "date":"2017-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Indexed DB",
+    "note":"",
+    "path":"018-indexed-db",
+    "page":"index",
+    "vlog":"3y_x3Nkc8Dw",
+    "date":"",
+    "tags":[]
+  },
+  {
+    "name":"Offline Web App",
+    "note":"",
+    "path":"017-offline-web-app",
+    "page":"web-app",
+    "vlog":"11kCO6TxD0E",
+    "date":"2017-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Web App",
+    "note":"",
+    "path":"016-web-app",
+    "page":"web-app",
+    "vlog":"-xFC_oqF_Bw",
+    "date":"2017-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"HTTPS Server",
+    "note":"",
+    "path":"015-https-server",
+    "page":"index",
+    "vlog":"xvMGNGaapG0",
+    "date":"2017-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Touch Controller",
+    "note":"",
+    "path":"014-touch-controller",
+    "page":"touch-controller",
+    "vlog":"3M_aNkaFkiw",
+    "date":"2017-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Tile Grid",
+    "note":"",
+    "path":"013-tile-grid",
+    "page":"tile-grid",
+    "vlog":"c32wtgMeT0U",
+    "date":"2017-mm-dd",
+    "tags":[]
+  },
+  {
+    "name":"Tile World",
+    "note":"Tile World",
+    "path":"012-tile-world",
+    "page":"tile-world",
+    "vlog":"WMTv6QsAp0I",
+    "date":"2017-mm-dd",
+    "tags":["js", "tile"]
+  },
+  {
+    "name":"Square Collision Response",
+    "note":"Square Collision",
+    "path":"011-square-collision-response",
+    "page":"response",
+    "vlog":"",
+    "date":"2017-mm-dd",
+    "tags":["JS", "collision"]
+  },
+  {
+    "name":"Collision",
+    "note":"Collision",
+    "path":"010-collision",
+    "page":"collision",
+    "vlog":"",
+    "date":"2017-mm-dd",
+    "tags":["JS", "collision"]
+  },
+  {
+    "name":"Control",
+    "note":"Control",
+    "path":"009-control",
+    "page":"control",
+    "vlog":"8uIt9a2XBrw",
+    "date":"2017-mm-dd",
+    "tags":["JS", "controller"]
+  },
+  {
+    "name":"Animation",
+    "note":"Animation",
+    "path":"008-animation",
+    "page":"animation",
+    "vlog":"fiVcbX-X_tc",
     "date":"2017-mm-dd",
     "tags":["JS"]
   },
   {
-    "name":"Objects And Vars",
-    "note":"Shows variable declaration in JavaScript",
-    "path":"002-objects-and-vars/",
-    "page":"objects.html",
-    "vlog":"",
+    "name":"Canvas",
+    "note":"How to use HTML5 canvas",
+    "path":"007-canvas",
+    "page":"canvas",
+    "vlog":"N3MQCi-R6KY",
     "date":"2017-mm-dd",
-    "tags":["JS"]
+    "tags":["HTML"]
   },
   {
-    "name":"Inheritance",
-    "note":"Shows basic class inheritance",
-    "path":"003-inheritance/",
-    "page":"inheritance.html",
-    "vlog":"",
+    "name":"Elements",
+    "note":"Working with HTML elements.",
+    "path":"006-elements",
+    "page":"elements",
+    "vlog":"hNYE7ReLibg",
+    "date":"2017-mm-dd",
+    "tags":["HTML", "JS"]
+  },
+  {
+    "name":"Multiple-Inheritance",
+    "note":"Shows one way to approach multiple inheritance. I later discovered that this approach copies all parent properties, which is different from true inheritance. True inheritance uses the same properties rather than cloning them. I have still found this to be a useful technique that achieves a similar effect.",
+    "path":"005-multiple-inheritance",
+    "page":"multiple-inheritance",
+    "vlog":"y2XSsC1UsAY",
     "date":"2017-mm-dd",
     "tags":["inheritance","JS"]
   },
   {
     "name":"Prototype Inheritance",
     "note":"Shows prototype inheritance in JS",
-    "path":"004-prototype-inheritance/",
-    "page":"prototype-inheritance.html",
-    "vlog":"",
+    "path":"004-prototype-inheritance",
+    "page":"prototype-inheritance",
+    "vlog":"Z3y3Y1fHcaE",
     "date":"2017-mm-dd",
     "tags":["inheritance","JS"]
   },
   {
-    "name":"Multiple-Inheritance",
-    "note":"Shows one way to approach multiple inheritance. I later discovered that this approach copies all parent properties, which is different from true inheritance. True inheritance uses the same properties rather than cloning them. I have still found this to be a useful technique that achieves a similar effect.",
-    "path":"005-multiple-inheritance/",
-    "page":"multiple-inheritance.html",
-    "vlog":"",
+    "name":"Inheritance",
+    "note":"Shows basic class inheritance",
+    "path":"003-inheritance",
+    "page":"inheritance",
+    "vlog":"de4Qc49lCUU",
     "date":"2017-mm-dd",
     "tags":["inheritance","JS"]
   },
   {
-    "name":"Elements",
-    "note":"Working with HTML elements.",
-    "code":"",
-    "path":"",
-    "page":"",
+    "name":"Objects And Vars",
+    "note":"Shows variable declaration in JavaScript",
+    "path":"002-objects-and-vars",
+    "page":"objects",
+    "vlog":"cPM-kl9WsCg",
     "date":"2017-mm-dd",
-    "tags":["HTML", "JS"]
+    "tags":["JS"]
+  },
+  {
+    "name":"Hello World",
+    "note":"A simple hello world example",
+    "path":"001-hello-world",
+    "page":"hello",
+    "vlog":"yv02WDcmxHk",
+    "date":"2017-mm-dd",
+    "tags":["JS"]
   }
 ]
