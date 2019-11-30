@@ -245,7 +245,7 @@
   {
     "name":"Calculator",
     "note":"",
-    "path":"028-calculator",
+    "path":"calculator",
     "page":"calculator",
     "vlog":"ySB3YlKqQLA",
     "date":"2017-mm-dd",
@@ -254,7 +254,7 @@
   {
     "name":"Blit",
     "note":"",
-    "path":"027-blit",
+    "path":"blit",
     "page":"blit",
     "vlog":"sKf2vJBiBj0",
     "date":"2017-mm-dd",
@@ -263,7 +263,7 @@
   {
     "name":"Dino Run",
     "note":"",
-    "path":"026-dino",
+    "path":"dino",
     "page":"dino",
     "vlog":"LZ0w3HAQKWU",
     "date":"2017-mm-dd",
@@ -272,7 +272,7 @@
   {
     "name":"Sprite Animation",
     "note":"",
-    "path":"025-animation",
+    "path":"animation",
     "page":"animation",
     "vlog":"5GxoVaO58NM",
     "date":"2017-mm-dd",
@@ -281,7 +281,7 @@
   {
     "name":"Load Image",
     "note":"",
-    "path":"024-load-image",
+    "path":"load-image",
     "page":"load-image",
     "vlog":"cbBXjqaCzbs",
     "date":"2017-mm-dd",
@@ -290,7 +290,7 @@
   {
     "name":"Tile Types",
     "note":"",
-    "path":"023-tile-types",
+    "path":"tile-types",
     "page":"tile-types",
     "vlog":"zRO6Q8VcHNE",
     "date":"2017-mm-dd",
@@ -299,7 +299,7 @@
   {
     "name":"Snake",
     "note":"",
-    "path":"022-snake",
+    "path":"snake",
     "page":"snake",
     "vlog":"pxBW6FZglrI",
     "date":"2017-mm-dd",
@@ -308,7 +308,7 @@
   {
     "name":"Top Down Tiles",
     "note":"",
-    "path":"021-top-down-tiles",
+    "path":"top-down-tiles",
     "page":"top-down-tiles",
     "vlog":"nPVWL6RlJPE",
     "date":"2017-mm-dd",
@@ -317,7 +317,7 @@
   {
     "name":"Hit The Wall",
     "note":"",
-    "path":"020-hit-the-wall",
+    "path":"hit-the-wall",
     "page":"hit-the-wall",
     "vlog":"r-Y-N4cLd10",
     "date":"2017-mm-dd",
@@ -326,7 +326,7 @@
   {
     "name":"Walk On Tiles",
     "note":"",
-    "path":"019-walk-on-tiles",
+    "path":"walk-on-tiles",
     "page":"walk-on-tiles",
     "vlog":"GN2Eh7UauwU",
     "date":"2017-mm-dd",
@@ -335,7 +335,7 @@
   {
     "name":"Indexed DB",
     "note":"",
-    "path":"018-indexed-db",
+    "path":"indexed-db",
     "page":"index",
     "vlog":"3y_x3Nkc8Dw",
     "date":"",
@@ -344,7 +344,7 @@
   {
     "name":"Offline Web App",
     "note":"",
-    "path":"017-offline-web-app",
+    "path":"offline-web-app",
     "page":"web-app",
     "vlog":"11kCO6TxD0E",
     "date":"2017-mm-dd",
@@ -353,7 +353,7 @@
   {
     "name":"Web App",
     "note":"",
-    "path":"016-web-app",
+    "path":"web-app",
     "page":"web-app",
     "vlog":"-xFC_oqF_Bw",
     "date":"2017-mm-dd",
@@ -362,7 +362,7 @@
   {
     "name":"HTTPS Server",
     "note":"",
-    "path":"015-https-server",
+    "path":"https-server",
     "page":"index",
     "vlog":"xvMGNGaapG0",
     "date":"2017-mm-dd",
@@ -371,7 +371,7 @@
   {
     "name":"Touch Controller",
     "note":"",
-    "path":"014-touch-controller",
+    "path":"touch-controller",
     "page":"touch-controller",
     "vlog":"3M_aNkaFkiw",
     "date":"2017-mm-dd",
@@ -380,7 +380,7 @@
   {
     "name":"Tile Grid",
     "note":"",
-    "path":"013-tile-grid",
+    "path":"tile-grid",
     "page":"tile-grid",
     "vlog":"c32wtgMeT0U",
     "date":"2017-mm-dd",
@@ -389,7 +389,7 @@
   {
     "name":"Tile World",
     "note":"Tile World",
-    "path":"012-tile-world",
+    "path":"tile-world",
     "page":"tile-world",
     "vlog":"WMTv6QsAp0I",
     "date":"2017-mm-dd",
@@ -398,7 +398,7 @@
   {
     "name":"Square Collision Response",
     "note":"Square Collision",
-    "path":"011-square-collision-response",
+    "path":"square-collision-response",
     "page":"response",
     "vlog":"",
     "date":"2017-mm-dd",
@@ -407,7 +407,7 @@
   {
     "name":"Collision",
     "note":"Collision",
-    "path":"010-collision",
+    "path":"collision",
     "page":"collision",
     "vlog":"",
     "date":"2017-mm-dd",
@@ -416,16 +416,16 @@
   {
     "name":"Control",
     "note":"Control",
-    "path":"009-control",
+    "path":"control",
     "page":"control",
     "vlog":"8uIt9a2XBrw",
     "date":"2017-mm-dd",
     "tags":["JS", "controller"]
   },
   {
-    "name":"Animation",
+    "name":"Animation Game Loop",
     "note":"Animation",
-    "path":"008-animation",
+    "path":"animation-game-loop",
     "page":"animation",
     "vlog":"fiVcbX-X_tc",
     "date":"2017-mm-dd",
@@ -434,7 +434,7 @@
   {
     "name":"Canvas",
     "note":"How to use HTML5 canvas",
-    "path":"007-canvas",
+    "path":"canvas",
     "page":"canvas",
     "vlog":"N3MQCi-R6KY",
     "date":"2017-mm-dd",
@@ -443,7 +443,7 @@
   {
     "name":"Elements",
     "note":"Working with HTML elements.",
-    "path":"006-elements",
+    "path":"elements",
     "page":"elements",
     "vlog":"hNYE7ReLibg",
     "date":"2017-mm-dd",
@@ -452,7 +452,7 @@
   {
     "name":"Multiple-Inheritance",
     "note":"Shows one way to approach multiple inheritance. I later discovered that this approach copies all parent properties, which is different from true inheritance. True inheritance uses the same properties rather than cloning them. I have still found this to be a useful technique that achieves a similar effect.",
-    "path":"005-multiple-inheritance",
+    "path":"multiple-inheritance",
     "page":"multiple-inheritance",
     "vlog":"y2XSsC1UsAY",
     "date":"2017-mm-dd",
@@ -461,7 +461,7 @@
   {
     "name":"Prototype Inheritance",
     "note":"Shows prototype inheritance in JS",
-    "path":"004-prototype-inheritance",
+    "path":"prototype-inheritance",
     "page":"prototype-inheritance",
     "vlog":"Z3y3Y1fHcaE",
     "date":"2017-mm-dd",
@@ -470,7 +470,7 @@
   {
     "name":"Inheritance",
     "note":"Shows basic class inheritance",
-    "path":"003-inheritance",
+    "path":"inheritance",
     "page":"inheritance",
     "vlog":"de4Qc49lCUU",
     "date":"2017-mm-dd",
@@ -479,7 +479,7 @@
   {
     "name":"Objects And Vars",
     "note":"Shows variable declaration in JavaScript",
-    "path":"002-objects-and-vars",
+    "path":"objects-and-vars",
     "page":"objects",
     "vlog":"cPM-kl9WsCg",
     "date":"2017-mm-dd",
@@ -488,7 +488,7 @@
   {
     "name":"Hello World",
     "note":"A simple hello world example",
-    "path":"001-hello-world",
+    "path":"hello-world",
     "page":"hello",
     "vlog":"yv02WDcmxHk",
     "date":"2017-mm-dd",

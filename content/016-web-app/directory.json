@@ -1,6 +1,0 @@
-{
-
-  "directories": ["ssl"],
-  "files": ["manifest.json", "server.js", "web-app.css", "web-app.html", "web-app.png"]
-
-}
