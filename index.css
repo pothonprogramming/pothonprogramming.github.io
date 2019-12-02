@@ -1,12 +1,65 @@
 /* Frank Poth 2019-11-25 */
 
+:root {
+
+  --header-height:64px;
+
+}
+
 * { margin:0; padding:0; }
+
+body, html {
+
+  height:100%;
+  width:100%;
+
+}
+
+footer {
+
+  align-items:center;
+  background-color:#202830;
+  color:#ffffff;
+  display:grid;
+  height:100%;
+
+}
+
+header {
+
+  align-content:center;
+  align-items:baseline;
+  display:flex;
+  min-height:var(--header-height);
+  flex-direction:row;
+  flex-wrap:wrap;
+
+}
+
+header a {
+
+  margin:4px;
+
+}
+
+main {
+
+  min-height:calc(100% - var(--header-height));
+  padding:4px;
+
+}
 
 #filter-button {
 
   background-color:rgba(0, 0, 0, 0.1);
   border-radius:8px;
   cursor:pointer;
+
+}
+
+#header-title {
+
+  margin:0 8px 0 0;
 
 }
 
