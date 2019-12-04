@@ -4,6 +4,7 @@
 
   <head>
 
+    <link href="media/consola.ttf" rel="stylesheet">
     <link href = "index.css" rel = "stylesheet" type = "text/css">
     <meta content = "width=device-width" name = "viewport">
     <title>Poth On Programming</title>
@@ -18,9 +19,9 @@
         
         <h1 class = "example-name">Name</h1>
         <div class = "example-links">
-          <a class = "example-code-link" href = "" target="_blank">code</a>
-          <a class = "example-page-link" href = "" target="_blank">page</a>
-          <a class = "example-vlog-link" href = "" target="_blank">vlog</a>
+          <a class = "example-link" data-name = "code" href = "" target="_blank">code</a>
+          <a class = "example-link" data-name = "page" href = "" target="_blank">page</a>
+          <a class = "example-link" data-name = "vlog" href = "" target="_blank">vlog</a>
         </div>
       
       </div>
@@ -29,19 +30,30 @@
 
     <header>
 
-      <h1 id = "header-title">Poth On Programming</h1>
+      <div id = "header-logo">
+        
+        <img id = "header-logo-image" src = "media/brackets-256x256.png">
+        <h1 id = "header-logo-text">Poth On Programming</h1>
+    
+      </div>
 
-      <a href = "https://github.com/pothonprogramming/pothonprogramming.github.io">Github</a>
-      <a href = "https://www.youtube.com/channel/UCdS3ojA8RL8t1r18Gj1cl6w">YouTube</a>
-      <a href = "https://frankpoth.info">Website</a>
+      <div id = "header-links">
+
+        <a class = "header-link" href = "https://github.com/pothonprogramming/pothonprogramming.github.io">Github</a>
+        <a class = "header-link" href = "https://www.youtube.com/channel/UCdS3ojA8RL8t1r18Gj1cl6w">YouTube</a>
+        <a class = "header-link" href = "https://frankpoth.info">Website</a>
+
+      </div>
 
     </header>
 
     <main>
 
-      <div>
-        <div contenteditable = true data-placeholder = "Enter query"></div>
-        <div id = "filter-button">Filter</div>
+      <div id = "main-filter-bar">
+        
+        <div contenteditable = true data-placeholder = "Enter query" id = "main-filter-query"></div>
+        <div id = "main-filter-button">Filter</div>
+      
       </div>
 
       <div id = "example-container">
