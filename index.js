@@ -1,40 +1,54 @@
 (() => {
 
-  var html = {
+  const example_container = document.getElementById("main-example-container");
+  const filter_query      = document.getElementById("main-filter-query");
 
-    example_template:  document.getElementById("example-template"),
-    example_container: document.getElementById("example-container")
+  const examples = [];
 
-  };
+  function filter(query) {
+
+    query = query.replace(/[\n\r\v]/g, ''); // filter newline and carriage return
+
+    for (var index = 0; index < examples.length; index ++) {
+
+      var example = examples[index];
+
+      var regexp = new RegExp(query, 'i');
+
+      if (regexp.test(example.data.name) || regexp.test(example.data.tags) || regexp.test(example.data.note) || regexp.test(example.data.date)) example_container.appendChild(example.element);
+      else if (example.element.parentElement) example_container.removeChild(example.element);
+
+    }
+
+  }
 
   fetch("data/examples.json").then(response => {
 
     return response.json();
 
-  }).then(examples => {
+  }).then(data => {
 
-    for (var index = 0; index < examples.length; index ++) {
+    for (var index = 0; index < data.length; index ++) examples[index] = new Example(data[index]);
 
-      var example_data     = examples[index];
-      var example_fragment = document.importNode(html.example_template.content, true);
-      var example_element  = example_fragment.children[0];
+    filter("");
 
-      example_element.querySelector(".example-name").innerText = example_data.name;
+  });
 
-      example_element.querySelector('a[data-name="code"]').href = "https://github.com/pothonprogramming/pothonprogramming.github.io/tree/master/content/" + example_data.path;
-      example_element.querySelector('a[data-name="page"]').href = "content/" + example_data.path + "/" + example_data.page + ".html";
-      example_element.querySelector('a[data-name="vlog"]').href = "https://www.youtube.com/watch?v=" + example_data.vlog;
+  window.addEventListener("click", (event) => {
 
-      html.example_container.appendChild(example_element);
+      if (event.target.id == "main-filter-button") filter(filter_query.innerText);
+
+  });
+
+  window.addEventListener("keydown", (event) => {
+
+    if (event.keyCode == 13) {
+     
+      event.preventDefault();
+      filter(filter_query.innerText);
 
     }
 
   });
-
-  function createExample() {
-
-
-
-  }
 
 })();

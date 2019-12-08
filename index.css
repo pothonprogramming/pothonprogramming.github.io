@@ -4,6 +4,7 @@
 
   --color-dark-yellow:#c09000;
   --color-light-gray:#e0e8f0;
+  --color-lighter-gray:#f0f8ff;
   --color-medium-gray:#606870;
   --color-signature-gray:#202830;
   --color-signature-yellow:#f0c000;
@@ -14,7 +15,8 @@
 
 * {
   
-  font-family: Consolas, monospace;
+  box-sizing:border-box;
+  font-family:Consolas, monospace;
   margin:0;
   padding:0;
   text-decoration:none;
@@ -37,10 +39,14 @@ body, html {
 
 footer {
 
-  align-items:center;
+  align-content:space-around;
+  align-items:space-around;
   background-color:var(--color-signature-gray);
   color:#ffffff;
   display:grid;
+  flex-direction:column;
+  justify-content:center;
+  justify-items:center;
   height:100%;
 
 }
@@ -60,8 +66,7 @@ header {
 
 main {
 
-  display:grid;
-  justify-content:space-around;
+  display:inline-block;
   min-height:calc(100% - var(--header-height));
   padding:4px;
 
@@ -69,17 +74,21 @@ main {
 
 .example {
 
-  margin:0px 0px 8px 0px; 
+  background-color:var(--color-lighter-gray);
+  border-radius:8px;
+  display: inline-block;
+  margin:4px 0px;
 
 }
 
 .example-link {
 
   background-color:var(--color-light-gray);
-  border-radius:8px;
+  border-radius:0px 0px 8px 8px;
   color:var(--color-signature-gray);
   cursor:pointer;
-  margin:0px 0px 0px 12px;
+  display:inline-block;
+  margin:0px 0px 4px;
   padding:4px 8px;
 
 }
@@ -93,8 +102,22 @@ main {
 
 .example-name {
 
+  background-color:var(--color-light-gray);
+  border-radius:8px 8px 0px 0px;
   color:var(--color-signature-gray);
-  margin:0px 0px 8px 0px;
+  display:inline-block;
+  padding:4px 8px;
+  user-select:none;
+  width:100%;
+
+}
+
+.example-note {
+
+  color:var(--color-signature-gray);
+  display:inline-block;
+  padding:0px 4px 4px 4px;
+  user-select:none;
 
 }
 
@@ -109,6 +132,12 @@ main {
 .header-link:hover {
 
   color:var(--color-light-gray);
+
+}
+
+#footer-note {
+
+  text-align:center;
 
 }
 
@@ -144,6 +173,14 @@ main {
   color:var(--color-signature-gray);
   display:inline;
   word-wrap: wrap break-word;
+
+}
+
+#main-example-container {
+
+  align-items: flex-start;
+  display:flex;
+  flex-direction:column;
 
 }
 

@@ -17,9 +17,11 @@ DOMKit.createElement = function(tag_name, attributes, content) {
 DOMKit.parseHTMLString = function(string) {
 
   var fragment = document.createDocumentFragment();
-  //fragment.content = string;
+  fragment.innerHTML = string;
 
-  return fragment;
+  alert(fragment.children[0]);
+
+  return fragment.children[0];
 
 };
 

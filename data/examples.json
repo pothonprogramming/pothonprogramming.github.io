@@ -1,21 +1,21 @@
 [
   {
     "name":"Bouncing Polygons",
-    "note":"",
+    "note":"Bounce convex polygons off of a non-axis aligned line.",
     "path":"bouncing-polygons",
     "page":"bouncing-polygons",
     "vlog":"Newm6jnp7T0",
     "date":"2018-mm-dd",
-    "tags":[]
+    "tags":"JS"
   },
   {
     "name":"Polygon Basics",
-    "note":"",
+    "note":"A good place to get started with 2D polygons.",
     "path":"polygon",
     "page":"polygon",
     "vlog":"3kICmEJ-xyo",
     "date":"2018-mm-dd",
-    "tags":[]
+    "tags":"JS"
   },
   {
     "name":"GJK Collision",
@@ -24,7 +24,7 @@
     "page":"gjk",
     "vlog":"",
     "date":"2018-mm-dd",
-    "tags":[]
+    "tags":"JS"
   },
   {
     "name":"Polygon Rotation",
@@ -33,358 +33,358 @@
     "page":"polygon-rotation",
     "vlog":"",
     "date":"2018-mm-dd",
-    "tags":[]
+    "tags":"JS"
   },
   {
     "name":"Hitbox",
-    "note":"",
+    "note":"Showcases moving hitboxes, tunneling, and non-tile based platforming.",
     "path":"hitbox",
     "page":"hitbox",
     "vlog":"VpSWuywFlC8",
     "date":"2018-mm-dd",
-    "tags":[]
+    "tags":"js,collision,tunneling"
   },
   {
     "name":"Vector Math",
-    "note":"",
+    "note":"There are multiple videos that go with this example. How do you get to them? I haven't implemented that functionality yet.",
     "path":"vector-math",
     "page":"vector-math",
     "vlog":"b5TjpTBW6yw",
     "date":"2018-mm-dd",
-    "tags":[]
+    "tags":"JS"
   },
   {
     "name":"Particle Pool",
-    "note":"",
+    "note":"Use object pooling to conserve memory when using lots of objects.",
     "path":"particle-pool",
     "page":"particle-pool",
     "vlog":"9dp0mAc2vvY",
     "date":"2018-mm-dd",
-    "tags":[]
+    "tags":"JS"
   },
   {
     "name":"Simple Inventory",
-    "note":"",
+    "note":"A very basic inventory system where you click an item to take it out of the world and put it into an array.",
     "path":"inventory",
     "page":"inventory",
     "vlog":"AKJMf73H1Jc",
     "date":"2018-mm-dd",
-    "tags":[]
+    "tags":"JS"
   },
   {
     "name":"Tile Animation",
-    "note":"",
+    "note":"Animate some background tiles based on frame rate.",
     "path":"tile-animation",
     "page":"tile-animation",
     "vlog":"AQABpi9nLfU",
     "date":"2018-mm-dd",
-    "tags":[]
+    "tags":"JS"
   },
   {
     "name":"Rectangle Collision",
-    "note":"",
+    "note":"Collision between two rectangles.",
     "path":"rectangle-collision",
     "page":"rectangle-collision",
     "vlog":"LYrge3ylccQ",
     "date":"2018-mm-dd",
-    "tags":[]
+    "tags":"JS"
   },
   {
     "name":"Moving Platforms",
-    "note":"",
+    "note":"Moving platforms for a 2D platforming game.",
     "path":"platform",
     "page":"platform",
     "vlog":"1eHAFNUPlk8",
     "date":"2018-mm-dd",
-    "tags":[]
+    "tags":"js,platformer"
   },
   {
     "name":"Platformer AI",
-    "note":"",
+    "note":"Shows how to make a few different AI types for a tile based platformer.",
     "path":"platformer-ai",
     "page":"platformer-ai",
     "vlog":"zbqwFb8DJgQ",
     "date":"2018-mm-dd",
-    "tags":[]
+    "tags":"js,platformer"
   },
   {
     "name":"Shoot",
-    "note":"",
+    "note":"Very basic shooting mechanism for 2D platformers. Click to shoot.",
     "path":"shoot",
     "page":"shoot",
     "vlog":"WML5a8QRtnw",
     "date":"2018-mm-dd",
-    "tags":[]
+    "tags":"js,platformer"
   },
   {
     "name":"Scrolling Tile Background",
-    "note":"",
+    "note":"Showcases a scrolling tile background as well as some very simple terrain interaction.",
     "path":"tile-scroll",
     "page":"tile-scroll",
     "vlog":"jabYMh9sI8Q",
     "date":"2018-mm-dd",
-    "tags":[]
+    "tags":"js,scrolling,side-scroller"
   },
   {
     "name":"3D Cube",
-    "note":"",
+    "note":"A 3D cube rendered on the CPU using nothing but pure JavaScript",
     "path":"cube",
     "page":"cube",
     "vlog":"OVQxTNd2U3w",
     "date":"2018-mm-dd",
-    "tags":[]
+    "tags":"js,3d"
   },
   {
     "name":"Pseudo 3D Starfield",
-    "note":"",
+    "note":"A 2D starfield with a 3D effect. Uses a valid 3D projection technique.",
     "path":"starfield",
     "page":"starfield",
     "vlog":"jtWvkNK2LVo",
     "date":"2018-mm-dd",
-    "tags":["3D"]
+    "tags":"js,3d"
   },
   {
     "name":"Bouncing Balls",
-    "note":"",
+    "note":"Bouncing balls that use directional/polar movement rather than axis aligned movement.",
     "path":"wmw-bouncing-balls",
     "page":"bouncing-balls",
     "vlog":"hoWjnidQOms",
     "date":"2018-mm-dd",
-    "tags":[]
+    "tags":"js"
   },
   {
     "name":"Basic HTML Layout",
-    "note":"",
+    "note":"My basic layout for projects. Provides a good starting point for small projects.",
     "path":"wmw-basic",
     "page":"basic",
     "vlog":"hm7py_lZkL8",
     "date":"2018-mm-dd",
-    "tags":[]
+    "tags":"html,js"
   },
   {
     "name":"Circle Collision Response",
-    "note":"",
+    "note":"Collision response technique for colliding circles.",
     "path":"circle-collision-response",
     "page":"circle-collision-response",
     "vlog":"nlwtgvZCz0k",
     "date":"2018-mm-dd",
-    "tags":[]
+    "tags":"js,collision"
   },
   {
     "name":"Circle Collision Detection",
-    "note":"",
+    "note":"Detect collision between two circles.",
     "path":"circle-collision-detection",
     "page":"circle-collision-detection",
     "vlog":"STcP9P122_8",
     "date":"2018-mm-dd",
-    "tags":["collision"]
+    "tags":"js,collision"
   },
   {
     "name":"Input Processing Output (IPO)",
-    "note":"",
+    "note":"I'm probably going to remove this one. It kind of makes sense, but I'm not sure how relevant or helpful it is.",
     "path":"ipo",
     "page":"ipo",
     "vlog":"PFd8Xw5C6Zs",
     "date":"2018-mm-dd",
-    "tags":[]
+    "tags":"JS"
   },
   {
     "name":"Rabbit Trap",
-    "note":"",
+    "note":"There are a few videos on this project. It's basically a how to build a platformer series that probably has too much overhead for what it is. I'm planning on redoing this one.",
     "path":"rabbit-trap",
     "page":"rabbit-trap",
     "vlog":"opiWzi0KWjs",
     "date":"2018-mm-dd",
-    "tags":[]
+    "tags":"JS,platformer"
   },
   {
     "name":"Pre-Scale Performance",
-    "note":"",
+    "note":"Tests out the performance of different scaling techniques. As of 2019, I prefer using CSS to scale.",
     "path":"pre-scale-performance",
     "page":"pre-scale-performance",
     "vlog":"hQD4Yw3IyZ0",
     "date":"2018-mm-dd",
-    "tags":[]
+    "tags":"JS"
   },
   {
     "name":"Tile Graphics",
-    "note":"",
+    "note":"Draw graphics to your tile map.",
     "path":"tile-graphics",
     "page":"tile-graphics",
     "vlog":"XELyA6ECDLk",
     "date":"2018-mm-dd",
-    "tags":[]
+    "tags":"js,tile,graphics"
   },
   {
     "name":"Pagination",
-    "note":"",
+    "note":"Paginates some static content.",
     "path":"pagination",
     "page":"pagination",
     "vlog":"7TSVnm5Fpj0",
     "date":"2018-mm-dd",
-    "tags":[]
+    "tags":"JS"
   },
   {
     "name":"Dominique's Doors",
-    "note":"",
+    "note":"A very basic level loading example using JSON.",
     "path":"dominiques-doors",
     "page":"dominiques-doors",
     "vlog":"96Q200cPFss",
     "date":"2018-mm-dd",
-    "tags":[]
+    "tags":"js,json"
   },
   {
     "name":"JSON",
-    "note":"",
+    "note":"A basic JSON example.",
     "path":"json",
     "page":"json",
     "vlog":"jRuz3bXBDKc",
     "date":"2018-mm-dd",
-    "tags":[]
+    "tags":"js,json"
   },
   {
     "name":"Calculator",
-    "note":"",
+    "note":"Make a JavaScript calculator. Note: It uses eval to calculate equations.",
     "path":"calculator",
     "page":"calculator",
     "vlog":"ySB3YlKqQLA",
     "date":"2017-mm-dd",
-    "tags":[]
+    "tags":"JS"
   },
   {
     "name":"Blit",
-    "note":"",
+    "note":"Blitting graphics.",
     "path":"blit",
     "page":"blit",
     "vlog":"sKf2vJBiBj0",
     "date":"2017-mm-dd",
-    "tags":[]
+    "tags":"JS"
   },
   {
     "name":"Dino Run",
-    "note":"",
+    "note":"A simple endless runner.",
     "path":"dino",
     "page":"dino",
     "vlog":"LZ0w3HAQKWU",
     "date":"2017-mm-dd",
-    "tags":[]
+    "tags":"JS,game"
   },
   {
     "name":"Sprite Animation",
-    "note":"",
+    "note":"Animate moving objects to make your game more interesting.",
     "path":"animation",
     "page":"animation",
     "vlog":"5GxoVaO58NM",
     "date":"2017-mm-dd",
-    "tags":[]
+    "tags":"js,animation"
   },
   {
     "name":"Load Image",
-    "note":"",
+    "note":"Load an image.",
     "path":"load-image",
     "page":"load-image",
     "vlog":"cbBXjqaCzbs",
     "date":"2017-mm-dd",
-    "tags":[]
+    "tags":"js,loading"
   },
   {
     "name":"Tile Types",
-    "note":"",
+    "note":"There are multiple videos for this example. This example covers the various types of tiles one might use in a 2D platformer.",
     "path":"tile-types",
     "page":"tile-types",
     "vlog":"zRO6Q8VcHNE",
     "date":"2017-mm-dd",
-    "tags":[]
+    "tags":"js,tile,slope"
   },
   {
     "name":"Snake",
-    "note":"",
+    "note":"The classic snake game.",
     "path":"snake",
     "page":"snake",
     "vlog":"pxBW6FZglrI",
     "date":"2017-mm-dd",
-    "tags":[]
+    "tags":"js,game"
   },
   {
     "name":"Top Down Tiles",
-    "note":"",
+    "note":"Top down tile based collision detection and response.",
     "path":"top-down-tiles",
     "page":"top-down-tiles",
     "vlog":"nPVWL6RlJPE",
     "date":"2017-mm-dd",
-    "tags":[]
+    "tags":"js,tile,collision"
   },
   {
     "name":"Hit The Wall",
-    "note":"",
+    "note":"2D platformer tile based collision detection and response.",
     "path":"hit-the-wall",
     "page":"hit-the-wall",
     "vlog":"r-Y-N4cLd10",
     "date":"2017-mm-dd",
-    "tags":[]
+    "tags":"JS"
   },
   {
     "name":"Walk On Tiles",
-    "note":"",
+    "note":"Interact with the tile grid using the player and your keyboard.",
     "path":"walk-on-tiles",
     "page":"walk-on-tiles",
     "vlog":"GN2Eh7UauwU",
     "date":"2017-mm-dd",
-    "tags":[]
+    "tags":"JS"
   },
   {
     "name":"Indexed DB",
-    "note":"",
+    "note":"An example that shows how to use Indexed DB.",
     "path":"indexed-db",
     "page":"index",
     "vlog":"3y_x3Nkc8Dw",
-    "date":"",
-    "tags":[]
+    "date":"2017-mm-dd",
+    "tags":"JS"
   },
   {
     "name":"Offline Web App",
-    "note":"",
+    "note":"Store the files your app needs in the browser so you can run your app offline.",
     "path":"offline-web-app",
     "page":"web-app",
     "vlog":"11kCO6TxD0E",
     "date":"2017-mm-dd",
-    "tags":[]
+    "tags":"JS"
   },
   {
     "name":"Web App",
-    "note":"",
+    "note":"Create a web app that can run in full screen mode on any device.",
     "path":"web-app",
     "page":"web-app",
     "vlog":"-xFC_oqF_Bw",
     "date":"2017-mm-dd",
-    "tags":[]
+    "tags":"JS"
   },
   {
     "name":"HTTPS Server",
-    "note":"",
+    "note":"Make an HTTPS server in Node JS.",
     "path":"https-server",
     "page":"index",
     "vlog":"xvMGNGaapG0",
     "date":"2017-mm-dd",
-    "tags":[]
+    "tags":"JS"
   },
   {
     "name":"Touch Controller",
-    "note":"",
+    "note":"Make a responsive touch controller for your mobile game.",
     "path":"touch-controller",
     "page":"touch-controller",
     "vlog":"3M_aNkaFkiw",
     "date":"2017-mm-dd",
-    "tags":[]
+    "tags":"JS"
   },
   {
     "name":"Tile Grid",
-    "note":"",
+    "note":"Learn about tile map indexing and how to find your place in the map.",
     "path":"tile-grid",
     "page":"tile-grid",
     "vlog":"c32wtgMeT0U",
     "date":"2017-mm-dd",
-    "tags":[]
+    "tags":"JS"
   },
   {
     "name":"Tile World",
@@ -393,7 +393,7 @@
     "page":"tile-world",
     "vlog":"WMTv6QsAp0I",
     "date":"2017-mm-dd",
-    "tags":["js", "tile"]
+    "tags":"js,tile"
   },
   {
     "name":"Square Collision Response",
@@ -402,7 +402,7 @@
     "page":"response",
     "vlog":"",
     "date":"2017-mm-dd",
-    "tags":["JS", "collision"]
+    "tags":"JS,collision"
   },
   {
     "name":"Collision",
@@ -411,7 +411,7 @@
     "page":"collision",
     "vlog":"",
     "date":"2017-mm-dd",
-    "tags":["JS", "collision"]
+    "tags":"JS,collision"
   },
   {
     "name":"Control",
@@ -420,7 +420,7 @@
     "page":"control",
     "vlog":"8uIt9a2XBrw",
     "date":"2017-mm-dd",
-    "tags":["JS", "controller"]
+    "tags":"JS,controller"
   },
   {
     "name":"Animation Game Loop",
@@ -429,7 +429,7 @@
     "page":"animation",
     "vlog":"fiVcbX-X_tc",
     "date":"2017-mm-dd",
-    "tags":["JS"]
+    "tags":"JS"
   },
   {
     "name":"Canvas",
@@ -438,7 +438,7 @@
     "page":"canvas",
     "vlog":"N3MQCi-R6KY",
     "date":"2017-mm-dd",
-    "tags":["HTML"]
+    "tags":"HTML"
   },
   {
     "name":"Elements",
@@ -447,7 +447,7 @@
     "page":"elements",
     "vlog":"hNYE7ReLibg",
     "date":"2017-mm-dd",
-    "tags":["HTML", "JS"]
+    "tags":"HTML,JS"
   },
   {
     "name":"Multiple-Inheritance",
@@ -456,7 +456,7 @@
     "page":"multiple-inheritance",
     "vlog":"y2XSsC1UsAY",
     "date":"2017-mm-dd",
-    "tags":["inheritance","JS"]
+    "tags":"inheritance,JS"
   },
   {
     "name":"Prototype Inheritance",
@@ -465,7 +465,7 @@
     "page":"prototype-inheritance",
     "vlog":"Z3y3Y1fHcaE",
     "date":"2017-mm-dd",
-    "tags":["inheritance","JS"]
+    "tags":"inheritance,JS"
   },
   {
     "name":"Inheritance",
@@ -474,7 +474,7 @@
     "page":"inheritance",
     "vlog":"de4Qc49lCUU",
     "date":"2017-mm-dd",
-    "tags":["inheritance","JS"]
+    "tags":"inheritance,JS"
   },
   {
     "name":"Objects And Vars",
@@ -483,7 +483,7 @@
     "page":"objects",
     "vlog":"cPM-kl9WsCg",
     "date":"2017-mm-dd",
-    "tags":["JS"]
+    "tags":"JS"
   },
   {
     "name":"Hello World",
@@ -492,6 +492,6 @@
     "page":"hello",
     "vlog":"yv02WDcmxHk",
     "date":"2017-mm-dd",
-    "tags":["JS"]
+    "tags":"JS"
   }
 ]
