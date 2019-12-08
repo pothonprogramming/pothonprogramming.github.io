@@ -61,12 +61,13 @@ header {
 
   align-content:center;
   align-items:center;
+  border-bottom:4px solid var(--color-signature-gray);
   display:flex;
   flex-wrap:wrap;
   justify-content:space-around;
   justify-items:space-between;
   min-height:var(--header-height);
-  padding:4px;
+  padding:8px 4px 8px 4px;
 
 }
 
@@ -74,7 +75,7 @@ main {
 
   display:inline-block;
   min-height:calc(100% - var(--header-height));
-  padding:4px;
+  padding:8px 4px 4px 4px;
 
 }
 
@@ -102,7 +103,6 @@ main {
 .example-link:hover {
 
   background-color:var(--color-white);
-  color:var(--color-medium-gray);
 
 }
 
@@ -140,13 +140,13 @@ main {
 
   color:var(--color-medium-gray);
   cursor:pointer;
-  margin:0px 0px 0px 12px;
+  padding:12px 8px 8px 8px;
 
 }
 
 .header-link:hover {
 
-  color:var(--color-light-gray);
+  color:var(--color-signature-gray);
 
 }
 
@@ -203,6 +203,7 @@ main {
 #main-filter-bar {
 
   display:flex;
+  padding:0px 0px 4px 0px;
 
 }
 
@@ -221,7 +222,6 @@ main {
 #main-filter-button:hover {
 
   background-color:var(--color-white);
-  color:var(--color-medium-gray);
 
 }
 
