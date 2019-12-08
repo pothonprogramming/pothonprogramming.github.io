@@ -37,6 +37,12 @@ body, html {
 
 }
 
+body {
+
+  text-align:center;
+
+}
+
 footer {
 
   align-content:space-around;
@@ -100,6 +106,12 @@ main {
 
 }
 
+.example-links {
+
+  text-align:left;
+
+}
+
 .example-name {
 
   background-color:var(--color-light-gray);
@@ -107,6 +119,7 @@ main {
   color:var(--color-signature-gray);
   display:inline-block;
   padding:4px 8px;
+  text-align:left;
   user-select:none;
   width:100%;
 
@@ -116,7 +129,9 @@ main {
 
   color:var(--color-signature-gray);
   display:inline-block;
+  max-width:640px;
   padding:0px 4px 4px 4px;
+  text-align:left;
   user-select:none;
 
 }
@@ -172,6 +187,7 @@ main {
 
   color:var(--color-signature-gray);
   display:inline;
+  text-align:left;
   word-wrap: wrap break-word;
 
 }
@@ -214,5 +230,6 @@ main {
   align-items:center;
   display:inline-flex;
   min-width:50%;
+  padding:0px 0px 0px 8px;
 
 }
