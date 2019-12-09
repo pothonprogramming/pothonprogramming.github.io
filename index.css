@@ -8,6 +8,7 @@
   --color-medium-gray:#606870;
   --color-signature-gray:#202830;
   --color-signature-yellow:#f0c000;
+  --color-transparent:rgba(0,0,0,0);
   --color-white:#ffffff;
   --header-height:64px;
 
@@ -23,10 +24,9 @@
 
 }
 
-[contenteditable=true]:empty:before {
+*:focus {
 
-  color:var(--color-medium-gray);
-  content:attr(data-placeholder);
+  outline:none;
 
 }
 
@@ -227,9 +227,32 @@ main {
 
 #main-filter-query {
 
+  align-content:center;
   align-items:center;
+  border:2px solid var(--color-transparent);
+  border-radius:8px;
   display:inline-flex;
+  margin:0px 8px 0px 0px;
   min-width:50%;
-  padding:0px 0px 0px 8px;
+  padding:0px 8px 0px 8px;
+
+}
+
+#main-filter-query:empty {
+
+  caret-color:var(--color-transparent);
+
+}
+
+#main-filter-query:empty:before {
+
+  color:var(--color-medium-gray);
+  content:attr(data-placeholder);
+
+}
+
+#main-filter-query:focus {
+
+  border-color:var(--color-signature-yellow);
 
 }
