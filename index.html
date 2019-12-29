@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 
-<html>
+<html lang = "en">
 
   <head>
 
-    <link href="media/consola.ttf" rel="stylesheet" type = "application/octet-stream">
-    <link href = "index.css" rel = "stylesheet" type = "text/css">
-    <meta content = "width=device-width" name = "viewport">
+    <link href = "media/consola.ttf" rel = "stylesheet" type = "application/octet-stream">
+    <link href = "theme.css"         rel = "stylesheet" type = "text/css">
+    <link href = "index.css"         rel = "stylesheet" type = "text/css">
+    <link href = "log.css"           rel = "stylesheet" type = "text/css">
+    <link href = "project.css"       rel = "stylesheet" type = "text/css">
+    
+    <meta charset = "utf-8">
+    <meta name = "author"       content = "Frank Poth">
+    <meta name = "color-scheme" content = "only light">
+    <meta name = "description"  content = "Find video tutorials on game programming as well as working examples and source code!">
+    <meta name = "keywords"     content = "programming tutorials,game design tutorials,javascript tutorials,learn to make games,make a game from scratch,learn to code,programming for games">
+    <meta name = "robots"       content = "follow,index">
+    <meta name = "theme-color"  content = "#202830">
+    <meta name = "viewport"     content = "height=device-height,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width">
+
     <script src = "library/dom-kit.js"></script>
-    <script src = "tools/example.js"></script>
+    <script src = "tools/project.js"></script>
+    <script src = "tools/log.js"></script>
+    
     <title>Poth On Programming</title>
 
   </head>
@@ -19,31 +33,57 @@
 
       <div id = "header-logo">
         
-        <img id = "header-logo-image" src = "media/brackets-256x256.png">
+        <img class = "logo-image" src = "media/brackets-64x64.png">
         <h1 id = "header-logo-text">Poth On Programming</h1>
     
       </div>
 
-      <div id = "header-links">
+      <nav id = "header-links">
 
         <a class = "header-link" href = "https://github.com/pothonprogramming/pothonprogramming.github.io">Github</a>
         <a class = "header-link" href = "https://www.youtube.com/channel/UCdS3ojA8RL8t1r18Gj1cl6w">YouTube</a>
         <a class = "header-link" href = "https://frankpoth.info">Website</a>
 
-      </div>
+      </nav>
 
     </header>
 
     <main>
 
-      <div id = "main-filter-bar">
-        
-        <div contenteditable = true data-placeholder = "Enter query" id = "main-filter-query"></div>
-        <div id = "main-filter-button">Filter</div>
-      
-      </div>
+      <section id = "main-logs">
 
-      <div id = "main-example-container"></div>
+        <h1 class = "banner">Logs</h1>
+
+        <div id = "main-logs-container">
+
+
+
+        </div>
+
+      </section>
+
+      <section id = "main-project">
+
+        <h1 class = "banner">Latest Project</h1>
+
+        <div class = "list-container" id = "main-project-container"></div>
+
+      </section>
+
+      <section id = "main-projects">
+
+        <h1 class = "banner">All Projects</h1>
+        
+        <div id = "main-filter-bar">
+          
+          <div contenteditable = true data-placeholder = "Enter query" id = "main-filter-query"></div>
+          <div class = "main-button" id = "main-filter-button">Filter</div>
+        
+        </div>
+
+        <div class = "list-container" id = "main-projects-container"></div>
+
+      </section>
 
     </main>
 
@@ -51,7 +91,7 @@
 
       <p id = "footer-note">The goal of Poth On Programming is to produce high quality programming tutorials that are easy to access and learn from.</p>
 
-      <img id = "header-logo-image" src = "media/brackets-256x256.png">
+      <img class = "logo-image" src = "media/brackets-64x64.png">
 
     </footer>
 

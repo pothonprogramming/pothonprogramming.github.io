@@ -1,46 +1,56 @@
 (() => {
 
-  const example_container = document.getElementById("main-example-container");
-  const filter_query      = document.getElementById("main-filter-query");
+  const filter_query       = document.getElementById("main-filter-query");
+  const project_container  = document.getElementById("main-project-container");
+  const projects_container = document.getElementById("main-projects-container");
+  const logs_container     = document.getElementById("main-logs-container");
+  const navigator_location = document.getElementById("main-navigator-location");
 
-  const examples = [];
+  const projects = [];
+  const logs     = [];
+
+  function clickOrTouchStart(event) {
+
+    event.preventDefault();
+
+    if (event.target.id == "main-filter-button") filter(filter_query.innerText);
+
+  }
+
+  function emptyContainer(container) {
+
+    while(container.firstChild) container.removeChild(container.firstChild);
+
+  }
+
+  function fillContainer(container, elements) {
+
+    while(elements.length != 0) container.appendChild(elements.shift());
+
+  }
 
   function filter(query) {
 
     query = query.replace(/[\n\r\v]/g, ''); // filter newline and carriage return
 
-    for (var index = 0; index < examples.length; index ++) {
+    var elements = [];
 
-      var example = examples[index];
+    for (var index = 1; index < projects.length; index ++) {
+
+      var project = projects[index];
 
       var regexp = new RegExp(query, 'i');
 
-      if (regexp.test(example.data.name) || regexp.test(example.data.tags) || regexp.test(example.data.note) || regexp.test(example.data.date)) example_container.appendChild(example.element);
-      else if (example.element.parentElement) example_container.removeChild(example.element);
+      if (regexp.test(project.data.name) || regexp.test(project.data.tags) || regexp.test(project.data.note) || regexp.test(project.data.date)) elements.push(project.element);
 
     }
 
+    emptyContainer(projects_container);
+    fillContainer(projects_container, elements);
+
   }
 
-  fetch("data/examples.json").then(response => {
-
-    return response.json();
-
-  }).then(data => {
-
-    for (var index = 0; index < data.length; index ++) examples[index] = new Example(data[index]);
-
-    filter("");
-
-  });
-
-  window.addEventListener("click", (event) => {
-
-      if (event.target.id == "main-filter-button") filter(filter_query.innerText);
-
-  });
-
-  window.addEventListener("keydown", (event) => {
+  function keyDown(event) {
 
     if (event.keyCode == 13) {
      
@@ -49,6 +59,42 @@
 
     }
 
+  }
+
+  fetch("data/logs.json").then(response => {
+
+    return response.json();
+
+  }).then(data => {
+
+    for (var index = 0; index < data.length; index ++) {
+      
+      logs[index] = new Log(data[index]);
+
+      logs_container.appendChild(logs[index].element);
+
+    }
+
   });
+
+  fetch("data/projects.json").then(response => {
+
+    return response.json();
+
+  }).then(data => {
+
+    for (var index = 0; index < data.length; index ++) projects[index] = new Project(data[index]);
+
+    project_container.appendChild(projects[0].element);
+
+    filter("");
+
+  });
+
+  window.addEventListener("touchstart", clickOrTouchStart);
+
+  window.addEventListener("click", clickOrTouchStart);
+
+  window.addEventListener("keydown", keyDown);
 
 })();

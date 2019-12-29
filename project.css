@@ -1,0 +1,54 @@
+/* Frank Poth 2019-12-29 */
+
+.project {
+
+  display: inline-block;
+  margin:4px 0px;
+
+}
+
+.project-link {
+
+  background-color:var(--color-light-blue);
+  color:var(--color-signature-gray);
+  cursor:pointer;
+  display:inline-block;
+  margin:0px 0px 4px;
+  padding:4px 8px;
+
+}
+
+.project-link:hover {
+
+  background-color:var(--color-white);
+
+}
+
+.project-links {
+
+  text-align:left;
+
+}
+
+.project-name {
+
+  color:var(--color-signature-gray);
+  display:inline-block;
+  padding:4px 8px;
+  text-align:left;
+  user-select:none;
+  width:100%;
+
+}
+
+.project-note {
+
+  color:var(--color-signature-gray);
+  display:inline-block;
+  max-width:640px;
+  padding:0px 4px 4px 8px;
+  text-align:left;
+  user-select:none;
+  width:100%;
+
+}
