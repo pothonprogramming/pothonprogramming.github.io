@@ -11,9 +11,13 @@
 
   function clickOrTouchStart(event) {
 
-    event.preventDefault();
+    if (event.target.id == "main-filter-button") {
+      
+      event.preventDefault();
+      
+      filter(filter_query.innerText);
 
-    if (event.target.id == "main-filter-button") filter(filter_query.innerText);
+    }
 
   }
 
