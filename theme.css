@@ -20,6 +20,7 @@
 * {
   
   box-sizing:border-box;
+  color:var(--color-signature-gray);
   font-family:Consolas, monospace;
   margin:0;
   padding:0;
@@ -80,6 +81,7 @@ main {
 
   display:inline-block;
   min-height:calc(100% - var(--header-height));
+  width:100%;
 
 }
 
@@ -87,8 +89,11 @@ main {
 
   background-color:var(--color-signature-gray);
   color:var(--color-signature-yellow);
+  display:block;
+  font-size:1.5em;
   padding:8px 0px 8px 8px;
   text-align:left;
+  user-select:none;
   width:100%;
 
 }
@@ -172,6 +177,7 @@ main {
 
   color:var(--color-signature-yellow);
   display:inline;
+  font-size:1.75em;
   text-align:left;
   word-wrap: wrap break-word;
 

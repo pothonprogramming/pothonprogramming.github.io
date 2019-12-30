@@ -3,17 +3,29 @@
 .log {
 
   display:block;
-  overflow:hidden;
-  padding:4px;
-  text-align:justify;
+  padding:0px 8px 8px 8px;
+  text-align:left;
+  width:100%;
+
+}
+
+.log-date {
+  
+  background-color:var(--color-light-gray);
+  display:inline-block;
+  padding:0px 4px;
+  text-align:right;
+  user-select:none;
 
 }
 
 .log-name {
 
   display:inline;
-  font-weight:bold;
+  font-weight:800;
   font-size:1.25em;
+  text-align:left;
+  user-select:none;
 
 }
 
@@ -25,15 +37,9 @@
 
 .log-note {
 
-  display:inline;
-
-}
-
-.log-date {
-
-  clear:both;
-  color:var(--color-medium-gray);
   display:block;
-  float:right;
+  padding:4px 0px;
+  text-align:justify;
+  width:100%;
 
 }

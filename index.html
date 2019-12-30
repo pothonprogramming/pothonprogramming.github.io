@@ -34,7 +34,7 @@
       <div id = "header-logo">
         
         <img class = "logo-image" src = "media/brackets-64x64.png">
-        <h1 id = "header-logo-text">Poth On Programming</h1>
+        <span id = "header-logo-text">Poth On Programming</span>
     
       </div>
 
@@ -50,40 +50,24 @@
 
     <main>
 
-      <section id = "main-logs">
+      <span class = "banner">Logs</span>
 
-        <h1 class = "banner">Logs</h1>
+      <div class = "list-container" id = "main-logs-container"></div>
 
-        <div id = "main-logs-container">
+      <span class = "banner">Latest Project</span>
 
+      <div class = "list-container" id = "main-project-container"></div>
 
-
-        </div>
-
-      </section>
-
-      <section id = "main-project">
-
-        <h1 class = "banner">Latest Project</h1>
-
-        <div class = "list-container" id = "main-project-container"></div>
-
-      </section>
-
-      <section id = "main-projects">
-
-        <h1 class = "banner">All Projects</h1>
+      <span class = "banner">All Projects</span>
         
-        <div id = "main-filter-bar">
+      <div id = "main-filter-bar">
           
-          <div contenteditable = true data-placeholder = "Enter query" id = "main-filter-query"></div>
-          <div class = "main-button" id = "main-filter-button">Filter</div>
+        <div contenteditable = true data-placeholder = "Enter query" id = "main-filter-query"></div>
+        <div class = "main-button" id = "main-filter-button">Filter</div>
         
-        </div>
+      </div>
 
-        <div class = "list-container" id = "main-projects-container"></div>
-
-      </section>
+      <div class = "list-container" id = "main-projects-container"></div>
 
     </main>
 

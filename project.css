@@ -34,6 +34,8 @@
 
   color:var(--color-signature-gray);
   display:inline-block;
+  font-size:1.25em;
+  font-weight:800;
   padding:4px 8px;
   text-align:left;
   user-select:none;
