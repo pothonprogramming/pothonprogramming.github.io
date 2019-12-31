@@ -2,8 +2,9 @@
 
 .project {
 
-  display: inline-block;
-  margin:4px 0px;
+  display:block;
+  margin:8px;
+  max-width:720px;
 
 }
 
@@ -47,7 +48,6 @@
 
   color:var(--color-signature-gray);
   display:inline-block;
-  max-width:640px;
   padding:0px 4px 4px 8px;
   text-align:left;
   user-select:none;

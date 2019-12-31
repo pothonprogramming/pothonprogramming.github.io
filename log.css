@@ -3,9 +3,8 @@
 .log {
 
   display:block;
-  padding:0px 8px 8px 8px;
-  text-align:left;
-  width:100%;
+  max-width:720px;
+  padding:8px;
 
 }
 
@@ -29,7 +28,7 @@
 
 }
 
-.log-name:after {
+.log-name:before, .log-name:after {
 
   content:" ";
 
@@ -37,9 +36,8 @@
 
 .log-note {
 
-  display:block;
+  display:inline;
   padding:4px 0px;
   text-align:justify;
-  width:100%;
 
 }

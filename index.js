@@ -4,7 +4,6 @@
   const project_container  = document.getElementById("main-project-container");
   const projects_container = document.getElementById("main-projects-container");
   const logs_container     = document.getElementById("main-logs-container");
-  const navigator_location = document.getElementById("main-navigator-location");
 
   const projects = [];
   const logs     = [];
@@ -71,13 +70,9 @@
 
   }).then(data => {
 
-    for (var index = 0; index < data.length; index ++) {
-      
-      logs[index] = new Log(data[index]);
+    for (var index = 0; index < data.length; index ++) logs[index] = new Log(data[index]);
 
-      logs_container.appendChild(logs[index].element);
-
-    }
+    logs_container.appendChild(logs[0].element);
 
   });
 
