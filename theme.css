@@ -171,7 +171,8 @@ main {
 
   color:var(--color-signature-yellow);
   display:inline;
-  font-size:1.75em;
+  font-size:2.0em;
+  font-weight:800;
   text-align:left;
   word-wrap: wrap break-word;
 

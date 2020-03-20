@@ -1,5 +1,14 @@
 [
   {
+    "name":"Better Tile",
+    "note":"A more efficient way to draw a tile map.",
+    "path":"better-tile",
+    "page":"better-tile",
+    "vlog":"",
+    "date":"2019-12-31",
+    "tags":"js,tile"
+  },
+  {
     "name":"Bouncing Polygons",
     "note":"Bounce convex polygons off of a non-axis aligned line.",
     "path":"bouncing-polygons",
