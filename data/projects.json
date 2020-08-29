@@ -1,12 +1,30 @@
 [
   {
+    "name":"Stay Down",
+    "note":"Try to stay down while collecting the items. Keyboard controls.",
+    "path":"stay-down",
+    "page":"stay-down",
+    "vlog":"",
+    "date":"2020-08-01",
+    "tags":"js,platformer"
+  },
+  {
+    "name":"Better Tile with Graphics",
+    "note":"Uses a canvas buffer to improve rendering performance. Shows how to load a tile sheet image and draw a tile map.",
+    "path":"better-tile-graphics",
+    "page":"better-tile-graphics",
+    "vlog":"",
+    "date":"2020-06-14",
+    "tags":"js,tile,performance,graphics,fetch"
+  },
+  {
     "name":"Better Tile",
     "note":"A more efficient way to draw a tile map.",
     "path":"better-tile",
     "page":"better-tile",
     "vlog":"XmmvblvSOho",
     "date":"2019-12-31",
-    "tags":"js,tile"
+    "tags":"js,tile,performance"
   },
   {
     "name":"Bouncing Polygons",

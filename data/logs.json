@@ -1,5 +1,10 @@
 [
   {
+    "name":"Project Trajectory",
+    "note":"My latest projects focus on improving rendering performance by reducing draw calls. These improvements will greatly improve the speed of your HTML5 game.",
+    "date":"2020-06-14"
+  },
+  {
     "name":"New Website!",
     "note":"This is the new website. You can search for projects and easily access related videos and source code. Here in the logs section I'll post about the latest project or whatever other updates I think might be helpful.",
     "date":"2019-12-24"

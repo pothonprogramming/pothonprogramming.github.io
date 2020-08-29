@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+
+    <meta charset = "utf-8">
+    <meta name = "author"       content = "Frank Poth">
+    <meta name = "description"  content = "Use a canvas buffer to store a full tile map image to reduce draw calls and save memory.">
+    <meta name = "theme-color"  content = "#202830">
+    <meta name = "viewport"     content = "height=device-height,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width">
+
+    <style>
+
+      * {
+      
+        box-sizing:border-box;
+        margin:0;
+        overflow:hidden;
+        padding:0;
+        user-select:none;
+      
+      }
+
+      html, body { height:100%; width:100%; }
+
+      body {
+      
+        align-content:center;
+        background-color:#202830;
+        display:grid;
+        justify-content:center;
+      
+      }
+
+      canvas { image-rendering:pixelated; image-rendering:-moz-crisp-edges; }
+
+    </style>
+
+    <title>Better Tile Graphics</title>
+
+  </head>
+
+  <body>
+
+    <canvas></canvas>
+
+    <script src = "better-tile-graphics.js"></script>
+
+  </body>
+
+</html>
