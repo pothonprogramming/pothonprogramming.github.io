@@ -6,7 +6,10 @@ STAY_DOWN.constructors.Platform = (function() {
 
     Rectangle2D.call(this, x, y, width, height);
 
-    this.move_force = 1;
+    this.move_force = Math.random() * 0.05 + 0.01;
+
+    this.velocity_y = 0;
+    this.velocity_y_max = -Math.random() * 2 - 1;
 
   }
 
@@ -14,7 +17,11 @@ STAY_DOWN.constructors.Platform = (function() {
 
     moveUp() {
 
-      this.y -= this.move_force;
+      this.velocity_y -= this.move_force;
+      
+      if (this.velocity_y < this.velocity_y_max) this.velocity_y = this.velocity_y_max;
+
+      this.moveY(this.velocity_y);
 
     }
 

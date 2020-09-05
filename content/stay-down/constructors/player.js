@@ -20,10 +20,10 @@ STAY_DOWN.constructors.Player = (function() {
   
   Player.prototype = {
   
-    ground() {
+    ground(velocity_y = 0) {
       
       this.grounded   = true;
-      this.velocity_y = 0;
+      this.velocity_y = velocity_y;
     
     },
   
@@ -49,7 +49,7 @@ STAY_DOWN.constructors.Player = (function() {
       this.velocity_y *= friction;
   
       this.x += this.velocity_x;
-      this.y += this.velocity_y;
+      this.moveY(this.velocity_y);
   
     }
   

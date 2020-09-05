@@ -36,11 +36,11 @@ STAY_DOWN.states.run = (function() {
 
   }
 
-  function collidePlatform(player_, platform) {
+  function collidePlayerWithPlatform(player_, platform) {
 
-    if (player_.getRight() < platform.getLeft() || player_.getLeft() > platform.getRight() || player_.getTop() > platform.getBottom() || player_.getBottom() < platform.getTop()) return false;
+    if (player_.getRight() < platform.getLeft() || player_.getLeft() > platform.getRight() || player_.getBottom() < platform.getTop() || player_.getOldBottom() > platform.getOldTop()) return false;
 
-    player.setBottom(platform.getTop());
+    player_.setBottom(platform.getTop());
 
     return true;
 
@@ -69,6 +69,8 @@ STAY_DOWN.states.run = (function() {
 
     player.updatePosition(gravity, friction);
 
+    console.log(player.velocity_y);
+
     if (collideTop(player, ground.top)) player.ground();
 
     var platforms = platform_manager.active_platforms;
@@ -79,9 +81,11 @@ STAY_DOWN.states.run = (function() {
 
       platform.moveUp();
 
-      if (platform.y < 300) platform.y = world_height;
+      if (platform.y < 32) platform.y = world_height;
 
-      if (collidePlatform(player, platform)) player.ground();
+      if (collidePlayerWithPlatform(player, platform)) player.ground(platform.velocity_y);
+
+
 
     }
 
@@ -113,7 +117,11 @@ STAY_DOWN.states.run = (function() {
 
   }
 
-  platform_manager.createPlatform(64, ground.top);
+  for (let x = world_width - 50; x > 0; x -= 50) {
+
+    platform_manager.createPlatform(x, ground.top);
+
+  }
 
   display.canvas.width = world_width;
   display.canvas.height = world_height;
