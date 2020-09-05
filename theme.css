@@ -54,6 +54,22 @@ footer {
   justify-content:center;
   justify-items:center;
   height:100%;
+  padding:32px 0;
+
+}
+
+footer a {
+
+  color:var(--color-signature-yellow);
+
+}
+
+footer p {
+
+  color:var(--color-light-gray);
+  max-width:512px;
+  padding:4px;
+  text-align:justify;
 
 }
 
@@ -140,14 +156,6 @@ main {
 .main-button:hover {
 
   background-color:var(--color-white);
-
-}
-
-#footer-note {
-
-  color:var(--color-light-gray);
-  padding:4px;
-  text-align:justify;
 
 }
 

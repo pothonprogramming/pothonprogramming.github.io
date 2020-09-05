@@ -1,5 +1,10 @@
 [
   {
+    "name":"Stay Down Devlog:",
+    "note":"Lately I've been working on a small game I plan to publish on itch.io. The idea is that platforms push you up and if you don't stay down you die. Pretty genious, I know, but the real goal of the project is to share with everyone how it's made. If you follow the videos you'll learn about fixed time step loops, game states, collision detection, and much more. Hopefully by the time I'm finished you'll have enough knowledge to publish your own fully featured game on itch.io.",
+    "date":"2020-09-05"
+  },
+  {
     "name":"Project Trajectory",
     "note":"My latest projects focus on improving rendering performance by reducing draw calls. These improvements will greatly improve the speed of your HTML5 game.",
     "date":"2020-06-14"

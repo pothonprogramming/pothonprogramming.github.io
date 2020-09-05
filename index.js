@@ -64,6 +64,21 @@
 
   }
 
+  // Open all links in new tab
+  (() => {
+
+    const links = document.querySelectorAll('a');
+  
+    for (var index = links.length - 1; index > -1; -- index) {
+     
+      var link = links[index];
+      if (link.target === '') link.setAttribute('target', '_blank');
+
+    }
+  
+  })();
+  
+
   fetch("data/logs.json").then(response => {
 
     return response.json();
