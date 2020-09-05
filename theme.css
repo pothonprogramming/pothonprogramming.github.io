@@ -23,6 +23,7 @@
   color:var(--color-signature-gray);
   font-family:Consolas, monospace;
   margin:0;
+  overflow:hidden;
   padding:0;
   text-decoration:none;
 
@@ -36,9 +37,15 @@
 
 body, html {
 
-  background-color:var(--color-white);
   height:100%;
   width:100%;
+
+}
+
+body {
+
+  background-color:var(--color-white);
+  overflow:auto;
 
 }
 
@@ -51,10 +58,15 @@ footer {
   color:#ffffff;
   display:grid;
   flex-direction:column;
+  height:auto;
   justify-content:center;
   justify-items:center;
   min-height:100%;
+  overflow-wrap: break-word;
   padding:32px 0;
+  width:100%;
+  word-break:break-word;
+  word-wrap: break-word;
 
 }
 
@@ -67,9 +79,8 @@ footer a {
 footer p {
 
   color:var(--color-light-gray);
-  max-width:512px;
+  max-width:800px;
   padding:4px;
-  text-align:justify;
 
 }
 
@@ -184,11 +195,5 @@ main {
   font-weight:800;
   text-align:left;
   word-wrap: wrap break-word;
-
-}
-
-#fundraiser-div {
-
-  max-width:100%;
 
 }
