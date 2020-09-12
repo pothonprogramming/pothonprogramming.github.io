@@ -13,6 +13,8 @@ STAY_DOWN.constructors.Rectangle2D = (function() {
   Rectangle2D.prototype = {
   
     getBottom() { return this.y + this.height; },
+    getCenterX() { return this.x + this.width * 0.5; },
+    getCenterY() { return this.y + this.height * 0.5; },
     getLeft() { return this.x; },
     getRight() { return this.x + this.width; },
     getTop() { return this.y; },

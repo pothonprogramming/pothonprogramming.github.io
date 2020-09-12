@@ -1,9 +1,11 @@
 STAY_DOWN.states.run = (function() {
 
   const display          = STAY_DOWN.display;
+  const output           = STAY_DOWN.output;
   const controller       = STAY_DOWN.controller;
   const engine           = STAY_DOWN.engine;
   const states           = STAY_DOWN.states;
+  const item_manager     = STAY_DOWN.managers.item_manager;
   const platform_manager = STAY_DOWN.managers.platform_manager;
   const GameState        = STAY_DOWN.constructors.GameState;
   const Player           = STAY_DOWN.constructors.Player;
@@ -16,11 +18,19 @@ STAY_DOWN.states.run = (function() {
 
   const player = new Player(100, 100);
 
-  const document_element = document.documentElement;
+  var item_count = 0;
 
   const ground = {
 
     top:world_height - 32
+
+  }
+
+  function collideRectangleWithRectangle(rectangle1, rectangle2) {
+
+    if (rectangle1.getLeft() > rectangle2.getRight() || rectangle1.getTop() > rectangle2.getBottom() || rectangle1.getRight() < rectangle2.getLeft() || rectangle1.getBottom() < rectangle2.getTop()) return false;
+
+    return true;
 
   }
 
@@ -69,8 +79,6 @@ STAY_DOWN.states.run = (function() {
 
     player.updatePosition(gravity, friction);
 
-    console.log(player.velocity_y);
-
     if (collideTop(player, ground.top)) player.ground();
 
     var platforms = platform_manager.active_platforms;
@@ -85,7 +93,24 @@ STAY_DOWN.states.run = (function() {
 
       if (collidePlayerWithPlatform(player, platform)) player.ground(platform.velocity_y);
 
+    }
 
+    var items = item_manager.active_items;
+
+    for (index = items.length - 1; index > -1; -- index) {
+
+      var item = items[index];
+
+      if (collideRectangleWithRectangle(item, player)) {
+
+        item.setLeft(Math.random() * (world_width - item.width));
+        item.setTop(Math.random() * (world_height - item.height - (world_height - ground.top)));
+
+        item_count ++;
+
+        output.innerText = item_count;
+
+      };
 
     }
 
@@ -112,10 +137,30 @@ STAY_DOWN.states.run = (function() {
 
     }
 
+    display.fillStyle = '#f09000';
+
+    var items = item_manager.active_items;
+
+    for (index = items.length - 1; index > -1; -- index) {
+
+      var item = items[index];
+
+      display.beginPath();
+      display.moveTo(item.getCenterX(), item.getTop() - 5);
+      display.lineTo(item.getRight() + 5, item.getCenterY());
+      display.lineTo(item.getCenterX(), item.getBottom() + 5);
+      display.lineTo(item.getLeft() - 5, item.getCenterY());
+
+      display.fill();
+
+    }
+
     display.fillStyle = player.color;
     display.fillRect(player.x, player.y, player.width, player.height);
 
   }
+
+  item_manager.createItem(100, Math.random() * (world_height - 16 - (world_height - ground.top)));
 
   for (let x = world_width - 50; x > 0; x -= 50) {
 
