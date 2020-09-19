@@ -1,6 +1,6 @@
 STAY_DOWN.managers.platform_manager = (function() {
 
-  const Platform = STAY_DOWN.constructors.Platform;
+  const { constructors: { Platform } } = STAY_DOWN;
 
   return {
 

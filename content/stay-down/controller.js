@@ -1,4 +1,4 @@
-STAY_DOWN.controller = (function(window) {
+STAY_DOWN.controller = (function() {
 
   const Input = function() {
 
@@ -55,4 +55,4 @@ STAY_DOWN.controller = (function(window) {
   
   };
 
-})(window);
+})();

@@ -1,4 +1,10 @@
-STAY_DOWN.states.pause = (function(controller, engine, states, GameState) {
+STAY_DOWN.states.pause = (function() {
+
+  const { controller, engine, states,
+  
+    constructors:{ GameState }
+
+  } = STAY_DOWN;
 
   function update() {
 
@@ -17,4 +23,4 @@ STAY_DOWN.states.pause = (function(controller, engine, states, GameState) {
 
   return new GameState(update, render);
 
-})(STAY_DOWN.controller, STAY_DOWN.engine, STAY_DOWN.states, STAY_DOWN.constructors.GameState);
+})();

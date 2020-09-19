@@ -1,14 +1,12 @@
 STAY_DOWN.states.run = (function() {
 
-  const display          = STAY_DOWN.display;
-  const output           = STAY_DOWN.output;
-  const controller       = STAY_DOWN.controller;
-  const engine           = STAY_DOWN.engine;
-  const states           = STAY_DOWN.states;
-  const item_manager     = STAY_DOWN.managers.item_manager;
-  const platform_manager = STAY_DOWN.managers.platform_manager;
-  const GameState        = STAY_DOWN.constructors.GameState;
-  const Player           = STAY_DOWN.constructors.Player;
+  const { display, output, controller, engine, states,
+  
+    constructors: { GameState, Player },
+    managers:{ item_manager, platform_manager }
+
+  } = STAY_DOWN;
+
 
   const world_width  = 480;
   const world_height = 480;

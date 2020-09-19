@@ -1,6 +1,6 @@
 STAY_DOWN.constructors.Item = (function() {
 
-  const Rectangle2D = STAY_DOWN.constructors.Rectangle2D;
+  const { constructors: { Rectangle2D } } = STAY_DOWN;
 
   const Item = function(x, y, width, height) {
 

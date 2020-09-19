@@ -1,4 +1,4 @@
-STAY_DOWN.engine = (function(window) {
+STAY_DOWN.engine = (function() {
 
   var running = false;
 
@@ -59,4 +59,4 @@ STAY_DOWN.engine = (function(window) {
 
   };
 
-})(window);
+})();

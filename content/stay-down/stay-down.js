@@ -23,19 +23,27 @@ const STAY_DOWN = {
 
 STAY_DOWN.initialize = function() {
 
-  this.controller.activate();
+  const { controller, display, engine, output,
 
-  document.body.appendChild(this.display.canvas);
+    states: { run },
 
-  document.body.appendChild(this.output);
+    resize
+  
+  } = this;
 
-  this.output.innerText = "Hello!";
+  controller.activate();
 
-  this.engine.setState(this.states.run);
-  this.engine.start();
+  document.body.appendChild(display.canvas);
 
-  this.resize();
+  document.body.appendChild(output);
 
-  window.addEventListener('resize', this.resize);
+  output.innerText = "Hello!";
+
+  engine.setState(run);
+  engine.start();
+
+  resize();
+
+  window.addEventListener('resize', resize);
 
 };
