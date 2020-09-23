@@ -1,6 +1,6 @@
 STAY_DOWN.states.run = (function() {
 
-  const { display, output, controller, engine, states,
+  const { display, controller, engine, states,
   
     constructors: { GameState, Player },
     managers:{ item_manager, platform_manager }
@@ -14,6 +14,9 @@ STAY_DOWN.states.run = (function() {
   const gravity  = 1;
   const friction = 0.9;
 
+  const output = document.createElement('p');
+  output.innerText = "Hello!";
+
   const player = new Player(100, 100);
 
   var item_count = 0;
@@ -21,6 +24,16 @@ STAY_DOWN.states.run = (function() {
   const ground = {
 
     top:world_height - 32
+
+  }
+
+  function activate() {
+
+    document.body.appendChild(output);
+
+    window.addEventListener('resize', resize);
+
+    resize();
 
   }
 
@@ -54,13 +67,83 @@ STAY_DOWN.states.run = (function() {
 
   }
 
+  function deactivate() {
+
+    document.body.removeChild(output);
+
+    window.removeEventListener('resize', resize);
+
+  }
+
+  function resize(event) {
+  
+    const rectangle = display.canvas.getBoundingClientRect();
+
+    output.style.top = rectangle.top + 'px';
+    output.style.left = rectangle.left + 'px';
+
+    const width_ratio = document.documentElement.clientWidth / display.canvas.width;
+    const height_ratio = document.documentElement.clientHeight / display.canvas.height;
+
+    const scale = width_ratio < height_ratio ? width_ratio : height_ratio;
+
+    display.canvas.style.height = Math.floor(display.canvas.width * scale) + 'px';
+    display.canvas.style.width = Math.floor(display.canvas.height * scale) + 'px';
+
+  }
+
+  function render() {
+
+    display.fillStyle = '#303840';
+    display.fillRect(0, 0, world_width, world_height);
+
+    display.fillStyle = '#202830';
+    
+    display.fillRect(0, ground.top, world_width, 4);
+
+    display.fillStyle = '#0090f0';
+
+    var platforms = platform_manager.active_platforms;
+
+    for (var index = platforms.length - 1; index > -1; -- index) {
+
+      var platform = platforms[index];
+
+      display.fillRect(platform.x, platform.y, platform.width, platform.height);
+
+    }
+
+    display.fillStyle = '#f09000';
+
+    var items = item_manager.active_items;
+
+    for (index = items.length - 1; index > -1; -- index) {
+
+      var item = items[index];
+
+      display.beginPath();
+      display.moveTo(item.getCenterX(), item.getTop() - 5);
+      display.lineTo(item.getRight() + 5, item.getCenterY());
+      display.lineTo(item.getCenterX(), item.getBottom() + 5);
+      display.lineTo(item.getLeft() - 5, item.getCenterY());
+
+      display.fill();
+
+    }
+
+    display.fillStyle = player.color;
+    display.fillRect(player.x, player.y, player.width, player.height);
+
+  }
+
   function update() {
 
     // Pause
     if (controller.getP()) {
      
       controller.setP(false);
-      engine.setState(states.pause);
+      
+      STAY_DOWN.changeState(states.pause);
 
       return;
 
@@ -114,50 +197,6 @@ STAY_DOWN.states.run = (function() {
 
   }
 
-  function render() {
-
-    display.fillStyle = '#303840';
-    display.fillRect(0, 0, world_width, world_height);
-
-    display.fillStyle = '#202830';
-    
-    display.fillRect(0, ground.top, world_width, 4);
-
-    display.fillStyle = '#0090f0';
-
-    var platforms = platform_manager.active_platforms;
-
-    for (var index = platforms.length - 1; index > -1; -- index) {
-
-      var platform = platforms[index];
-
-      display.fillRect(platform.x, platform.y, platform.width, platform.height);
-
-    }
-
-    display.fillStyle = '#f09000';
-
-    var items = item_manager.active_items;
-
-    for (index = items.length - 1; index > -1; -- index) {
-
-      var item = items[index];
-
-      display.beginPath();
-      display.moveTo(item.getCenterX(), item.getTop() - 5);
-      display.lineTo(item.getRight() + 5, item.getCenterY());
-      display.lineTo(item.getCenterX(), item.getBottom() + 5);
-      display.lineTo(item.getLeft() - 5, item.getCenterY());
-
-      display.fill();
-
-    }
-
-    display.fillStyle = player.color;
-    display.fillRect(player.x, player.y, player.width, player.height);
-
-  }
-
   item_manager.createItem(100, Math.random() * (world_height - 16 - (world_height - ground.top)));
 
   for (let x = world_width - 50; x > 0; x -= 50) {
@@ -169,6 +208,6 @@ STAY_DOWN.states.run = (function() {
   display.canvas.width = world_width;
   display.canvas.height = world_height;
 
-  return new GameState(update, render);
+  return new GameState(activate, deactivate, render, update);
 
 })();

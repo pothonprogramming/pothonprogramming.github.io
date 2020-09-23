@@ -6,21 +6,24 @@ STAY_DOWN.states.pause = (function() {
 
   } = STAY_DOWN;
 
+  function activate() {}
+
+  function deactivate() {}
+
+  function render() {}
+
   function update() {
 
     if (controller.getP()) {
       
       controller.setP(false);
-      engine.setState(states.run);
-
-      return;
+      
+      STAY_DOWN.changeState(states.run);
 
     }
   
   }
 
-  function render() {}
-
-  return new GameState(update, render);
+  return new GameState(activate, deactivate, render, update);
 
 })();

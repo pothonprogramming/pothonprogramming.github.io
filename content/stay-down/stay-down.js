@@ -1,49 +1,45 @@
-const STAY_DOWN = {
+const STAY_DOWN = (function() {
 
-  constructors:{},
-  managers:{},
-  states:{},
+  var state;
 
-  display:document.createElement('canvas').getContext('2d', { alpha:false }),
-  output:document.createElement('p'),
+  return {
 
-  resize:function(event) {
-
-    const output = STAY_DOWN.output;
-    const rectangle = STAY_DOWN.display.canvas.getBoundingClientRect();
-
-
-
-    output.style.top = rectangle.top + 'px';
-    output.style.left = rectangle.left + 'px';
-
-  }
-
-};
-
-STAY_DOWN.initialize = function() {
-
-  const { controller, display, engine, output,
-
-    states: { run },
-
-    resize
+    constructors:{},
+    managers:{},
+    states:{},
   
-  } = this;
+    display:document.createElement('canvas').getContext('2d', { alpha:false }),
 
-  controller.activate();
+    changeState(state_) {
 
-  document.body.appendChild(display.canvas);
+      if (state) state.deactivate();
 
-  document.body.appendChild(output);
+      state = state_;
 
-  output.innerText = "Hello!";
+      state.activate();
 
-  engine.setState(run);
-  engine.start();
+      this.engine.setState(state);
 
-  resize();
+    },
 
-  window.addEventListener('resize', resize);
+    initialize() {
 
-};
+      const { controller, display, engine,
+
+        states: { run }
+      
+      } = this;
+    
+      controller.activate();
+    
+      document.body.appendChild(display.canvas);
+    
+      this.changeState(run);
+    
+      engine.start();
+
+    }
+  
+  };
+
+})();

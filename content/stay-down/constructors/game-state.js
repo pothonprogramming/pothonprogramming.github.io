@@ -1,9 +1,11 @@
 STAY_DOWN.constructors.GameState = (function() {
 
-  const GameState = function(update, render) {
+  const GameState = function(activate, deactivate, render, update) {
 
-    this.update = update;
+    this.activate = activate;
+    this.deactivate = deactivate;
     this.render = render;
+    this.update = update;
 
   };
 
