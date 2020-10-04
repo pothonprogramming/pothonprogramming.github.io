@@ -1,5 +1,9 @@
 const STAY_DOWN = (function() {
 
+  const display = document.createElement('canvas').getContext('2d', { alpha:false });
+
+  var controller;
+  var engine;
   var state;
 
   return {
@@ -7,8 +11,6 @@ const STAY_DOWN = (function() {
     constructors:{},
     managers:{},
     states:{},
-  
-    display:document.createElement('canvas').getContext('2d', { alpha:false }),
 
     changeState(state_) {
 
@@ -18,27 +20,39 @@ const STAY_DOWN = (function() {
 
       state.activate();
 
-      this.engine.setState(state);
+      engine.setState(state);
 
     },
 
+    getController() { return controller; },
+
+    getDisplay() { return display; },
+
+    getEngine() { return engine; },
+
     initialize() {
 
-      const { controller, display, engine,
+      const {
 
-        states: { run }
+        states: { run },
+
+        changeState
       
-      } = this;
+      } = STAY_DOWN;
     
       controller.activate();
     
       document.body.appendChild(display.canvas);
     
-      this.changeState(run);
+      changeState(run);
     
       engine.start();
 
-    }
+    },
+
+    setController(controller_) { controller = controller_; },
+
+    setEngine(engine_) { engine = engine_; }
   
   };
 

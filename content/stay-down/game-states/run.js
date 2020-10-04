@@ -1,12 +1,16 @@
 STAY_DOWN.states.run = (function() {
 
-  const { display, controller, engine, states,
+  const { states,
   
     constructors: { GameState, Player },
-    managers:{ item_manager, platform_manager }
+    managers:{ item_manager, platform_manager },
+
+    changeState
 
   } = STAY_DOWN;
 
+  const controller = STAY_DOWN.getController();
+  const display = STAY_DOWN.getDisplay();
 
   const world_width  = 480;
   const world_height = 480;
@@ -76,11 +80,6 @@ STAY_DOWN.states.run = (function() {
   }
 
   function resize(event) {
-  
-    const rectangle = display.canvas.getBoundingClientRect();
-
-    output.style.top = rectangle.top + 'px';
-    output.style.left = rectangle.left + 'px';
 
     const width_ratio = document.documentElement.clientWidth / display.canvas.width;
     const height_ratio = document.documentElement.clientHeight / display.canvas.height;
@@ -89,6 +88,11 @@ STAY_DOWN.states.run = (function() {
 
     display.canvas.style.height = Math.floor(display.canvas.width * scale) + 'px';
     display.canvas.style.width = Math.floor(display.canvas.height * scale) + 'px';
+
+    const rectangle = display.canvas.getBoundingClientRect();
+
+    output.style.top = rectangle.top + 'px';
+    output.style.left = rectangle.left + 'px';
 
   }
 
@@ -143,7 +147,7 @@ STAY_DOWN.states.run = (function() {
      
       controller.setP(false);
       
-      STAY_DOWN.changeState(states.pause);
+      changeState(states.pause);
 
       return;
 
