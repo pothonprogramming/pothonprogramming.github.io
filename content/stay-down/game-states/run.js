@@ -2,6 +2,7 @@ STAY_DOWN.states.run = (function() {
 
   const { states,
   
+    images,
     constructors: { GameState, Player },
     managers:{ item_manager, platform_manager },
 
@@ -11,12 +12,13 @@ STAY_DOWN.states.run = (function() {
 
   const controller = STAY_DOWN.getController();
   const display = STAY_DOWN.getDisplay();
+  const renderer = STAY_DOWN.getRenderer();
 
-  const world_width  = 480;
-  const world_height = 480;
+  const world_width  = 256;
+  const world_height = 256;
 
   const gravity  = 1;
-  const friction = 0.9;
+  const friction = 0.8;
 
   const output = document.createElement('p');
   output.innerText = "Hello!";
@@ -113,7 +115,7 @@ STAY_DOWN.states.run = (function() {
 
       var platform = platforms[index];
 
-      display.fillRect(platform.x, platform.y, platform.width, platform.height);
+      renderer.drawImage(images.platform, platform.x, platform.y);
 
     }
 
@@ -125,18 +127,11 @@ STAY_DOWN.states.run = (function() {
 
       var item = items[index];
 
-      display.beginPath();
-      display.moveTo(item.getCenterX(), item.getTop() - 5);
-      display.lineTo(item.getRight() + 5, item.getCenterY());
-      display.lineTo(item.getCenterX(), item.getBottom() + 5);
-      display.lineTo(item.getLeft() - 5, item.getCenterY());
-
-      display.fill();
+      renderer.drawImage(images.diamond, item.x, item.y);
 
     }
 
-    display.fillStyle = player.color;
-    display.fillRect(player.x, player.y, player.width, player.height);
+    renderer.drawImage(images.dominique, player.x, player.y);
 
   }
 
@@ -203,7 +198,7 @@ STAY_DOWN.states.run = (function() {
 
   item_manager.createItem(100, Math.random() * (world_height - 16 - (world_height - ground.top)));
 
-  for (let x = world_width - 50; x > 0; x -= 50) {
+  for (let x = world_width - 16; x > 0; x -= 18) {
 
     platform_manager.createPlatform(x, ground.top);
 

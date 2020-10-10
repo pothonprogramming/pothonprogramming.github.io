@@ -4,11 +4,20 @@ const STAY_DOWN = (function() {
 
   var controller;
   var engine;
+  var loader;
+  var renderer;
   var state;
 
   return {
 
     constructors:{},
+    images: {
+
+      diamond:undefined,
+      dominique:undefined,
+      platform:undefined
+
+    },
     managers:{},
     states:{},
 
@@ -25,34 +34,53 @@ const STAY_DOWN = (function() {
     },
 
     getController() { return controller; },
-
     getDisplay() { return display; },
-
     getEngine() { return engine; },
+    getLoader() { return loader; },
+    getRenderer() { return renderer; },
 
     initialize() {
 
       const {
 
+        images,
         states: { run },
 
         changeState
       
       } = STAY_DOWN;
+
+      loader.loadImages([
+
+        'media/images/diamond.png',
+        'media/images/dominique.png',
+        'media/images/platform.png'
+
+      ],
+      
+      function(images_) {
+
+        images.diamond = images_[0],
+        images.dominique = images_[1],
+        images.platform = images_[2]
+
+        controller.activate();
     
-      controller.activate();
+        document.body.appendChild(display.canvas);
     
-      document.body.appendChild(display.canvas);
+        changeState(run);
     
-      changeState(run);
-    
-      engine.start();
+        engine.start();
+
+      });
 
     },
 
     setController(controller_) { controller = controller_; },
 
-    setEngine(engine_) { engine = engine_; }
+    setEngine(engine_) { engine = engine_; },
+    setLoader(loader_) { loader = loader_; },
+    setRenderer(renderer_) { renderer = renderer_; }
   
   };
 

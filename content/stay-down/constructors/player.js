@@ -14,7 +14,7 @@ STAY_DOWN.constructors.Player = (function() {
     this.velocity_x = 0;
     this.velocity_y = 0;
   
-    Rectangle2D.call(this, x, y, 32, 32);
+    Rectangle2D.call(this, x, y, 16, 32);
   
   };
   

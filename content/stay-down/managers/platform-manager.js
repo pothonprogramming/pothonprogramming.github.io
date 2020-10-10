@@ -8,7 +8,7 @@ STAY_DOWN.managers.platform_manager = (function() {
 
     createPlatform(x, y) {
 
-      this.active_platforms.push(new Platform(x, y, 48, 4));
+      this.active_platforms.push(new Platform(x, y, 16, 4));
 
     }
 
