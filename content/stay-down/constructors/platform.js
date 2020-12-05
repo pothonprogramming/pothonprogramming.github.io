@@ -23,6 +23,14 @@ STAY_DOWN.constructors.Platform = (function() {
 
       this.moveY(this.velocity_y);
 
+    },
+
+    reset(y) {
+
+      this.velocity_y = 0;
+      this.velocity_y_max = -Math.random() * 2 - 1;
+      this.setTop(y);
+
     }
 
   };

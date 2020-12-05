@@ -54,15 +54,17 @@ const STAY_DOWN = (function() {
 
         'media/images/diamond.png',
         'media/images/dominique.png',
-        'media/images/platform.png'
+        'media/images/platform.png',
+        'media/images/spike.png'
 
       ],
       
       function(images_) {
 
-        images.diamond = images_[0],
-        images.dominique = images_[1],
-        images.platform = images_[2]
+        images.diamond = images_[0];
+        images.dominique = images_[1];
+        images.platform = images_[2];
+        images.spike = images_[3];
 
         controller.activate();
     

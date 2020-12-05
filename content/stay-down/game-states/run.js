@@ -3,8 +3,7 @@ STAY_DOWN.states.run = (function() {
   const { states,
   
     images,
-    constructors: { GameState, Player },
-    managers:{ item_manager, platform_manager },
+    constructors: { GameState, Item, Platform, Player },
 
     changeState
 
@@ -21,9 +20,6 @@ STAY_DOWN.states.run = (function() {
   const friction = 0.8;
 
   const output = document.createElement('p');
-  output.innerText = "Hello!";
-
-  const player = new Player(100, 100);
 
   var item_count = 0;
 
@@ -33,11 +29,19 @@ STAY_DOWN.states.run = (function() {
 
   }
 
+  const item = new Item(128, 100, 16, 16);
+
+  const player = new Player(2, ground.top - 32);
+
+  const platforms = [];
+
   function activate() {
 
     document.body.appendChild(output);
 
     window.addEventListener('resize', resize);
+
+    output.innerText = "Where am I? I need to get out of here...";
 
     resize();
 
@@ -93,7 +97,7 @@ STAY_DOWN.states.run = (function() {
 
     const rectangle = display.canvas.getBoundingClientRect();
 
-    output.style.top = rectangle.top + 'px';
+    output.style.top = (rectangle.top + rectangle.height - 40) + 'px';
     output.style.left = rectangle.left + 'px';
 
   }
@@ -103,14 +107,6 @@ STAY_DOWN.states.run = (function() {
     display.fillStyle = '#303840';
     display.fillRect(0, 0, world_width, world_height);
 
-    display.fillStyle = '#202830';
-    
-    display.fillRect(0, ground.top, world_width, 4);
-
-    display.fillStyle = '#0090f0';
-
-    var platforms = platform_manager.active_platforms;
-
     for (var index = platforms.length - 1; index > -1; -- index) {
 
       var platform = platforms[index];
@@ -119,19 +115,18 @@ STAY_DOWN.states.run = (function() {
 
     }
 
-    display.fillStyle = '#f09000';
+    renderer.drawImage(images.diamond, item.x, item.y);
 
-    var items = item_manager.active_items;
+    renderer.drawImage(images.dominique, player.x, player.y);
 
-    for (index = items.length - 1; index > -1; -- index) {
+    for(var x = world_width - 16; x > -1; x -= 16) {
 
-      var item = items[index];
-
-      renderer.drawImage(images.diamond, item.x, item.y);
+      renderer.drawImage(images.spike, x, 0);
 
     }
 
-    renderer.drawImage(images.dominique, player.x, player.y);
+    display.fillStyle = '#202830';
+    display.fillRect(0, ground.top, world_width, 4);
 
   }
 
@@ -157,11 +152,21 @@ STAY_DOWN.states.run = (function() {
 
     }
 
+    if (player.getTop() < 4) {
+
+      if (item_count === 0) output.innerText = "Ouch! Probably shouldn't touch those spikes.";
+      else output.innerText = "Ouch! Oh, snap! I lost my diamonds!!!";
+
+      player.y = player.old_y = ground.top - player.height;
+      player.x = 2;
+
+      item_count = 0;
+
+    }
+
     player.updatePosition(gravity, friction);
 
     if (collideTop(player, ground.top)) player.ground();
-
-    var platforms = platform_manager.active_platforms;
 
     for (var index = platforms.length - 1; index > -1; -- index) {
 
@@ -169,38 +174,28 @@ STAY_DOWN.states.run = (function() {
 
       platform.moveUp();
 
-      if (platform.y < 32) platform.y = world_height;
+      if (platform.y < 0) platform.reset(ground.top);
 
       if (collidePlayerWithPlatform(player, platform)) player.ground(platform.velocity_y);
 
     }
 
-    var items = item_manager.active_items;
+    if (collideRectangleWithRectangle(item, player)) {
 
-    for (index = items.length - 1; index > -1; -- index) {
+      item.setLeft(Math.random() * (world_width - item.width));
+      item.setTop(Math.random() * (world_height - item.height - (world_height - ground.top)));
 
-      var item = items[index];
+      item_count ++;
 
-      if (collideRectangleWithRectangle(item, player)) {
+      output.innerText = item_count;
 
-        item.setLeft(Math.random() * (world_width - item.width));
-        item.setTop(Math.random() * (world_height - item.height - (world_height - ground.top)));
-
-        item_count ++;
-
-        output.innerText = item_count;
-
-      };
-
-    }
+    };
 
   }
 
-  item_manager.createItem(100, Math.random() * (world_height - 16 - (world_height - ground.top)));
+  for (let x = world_width - 20; x > 16; x -= 18) {
 
-  for (let x = world_width - 16; x > 0; x -= 18) {
-
-    platform_manager.createPlatform(x, ground.top);
+    platforms.push(new Platform(x, ground.top, 16, 4));
 
   }
 
