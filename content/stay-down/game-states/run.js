@@ -1,17 +1,15 @@
-STAY_DOWN.states.run = (function() {
+STAY_DOWN.setState('run', (function() {
 
-  const { states,
-  
-    images,
-    constructors: { GameState, Item, Platform, Player },
+  const changeState = STAY_DOWN.changeState;
+  const getBuffer = STAY_DOWN.getBuffer;
+  const getImage = STAY_DOWN.getImage;
 
-    changeState
-
-  } = STAY_DOWN;
+  const Item = STAY_DOWN.getConstructor('Item');
+  const Player = STAY_DOWN.getConstructor('Player');
+  const Platform = STAY_DOWN.getConstructor('Platform');
 
   const controller = STAY_DOWN.getController();
-  const display = STAY_DOWN.getDisplay();
-  const renderer = STAY_DOWN.getRenderer();
+  const display = STAY_DOWN.getBuffer('display');
 
   const world_width  = 256;
   const world_height = 256;
@@ -104,24 +102,29 @@ STAY_DOWN.states.run = (function() {
 
   function render() {
 
-    display.fillStyle = '#303840';
-    display.fillRect(0, 0, world_width, world_height);
+    var image = getImage('platform');
+
+    var buffer = getBuffer('background');
+    
+    display.drawImage(buffer.canvas, 0, 0);
 
     for (var index = platforms.length - 1; index > -1; -- index) {
 
       var platform = platforms[index];
 
-      renderer.drawImage(images.platform, platform.x, platform.y);
+      display.drawImage(image, platform.x, platform.y);
 
     }
 
-    renderer.drawImage(images.diamond, item.x, item.y);
+    display.drawImage(getImage('diamond'), Math.floor(item.x), Math.floor(item.y));
 
-    renderer.drawImage(images.dominique, player.x, player.y);
+    display.drawImage(getImage('dominique'), Math.floor(player.x), Math.floor(player.y));
+
+    image = getImage('spike');
 
     for(var x = world_width - 16; x > -1; x -= 16) {
 
-      renderer.drawImage(images.spike, x, 0);
+      display.drawImage(image, x, 0);
 
     }
 
@@ -137,7 +140,7 @@ STAY_DOWN.states.run = (function() {
      
       controller.setP(false);
       
-      changeState(states.pause);
+      changeState('pause');
 
       return;
 
@@ -199,9 +202,6 @@ STAY_DOWN.states.run = (function() {
 
   }
 
-  display.canvas.width = world_width;
-  display.canvas.height = world_height;
+  return { activate, deactivate, render, update };
 
-  return new GameState(activate, deactivate, render, update);
-
-})();
+})());

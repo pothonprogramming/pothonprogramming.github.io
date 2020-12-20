@@ -1,4 +1,4 @@
-STAY_DOWN.constructors.Rectangle2D = (function() {
+STAY_DOWN.setConstructor('Rectangle2D', (function() {
 
   const Rectangle2D = function(x, y, width, height) {
 
@@ -34,4 +34,4 @@ STAY_DOWN.constructors.Rectangle2D = (function() {
 
   return Rectangle2D;
 
-})();
+})());

@@ -1,88 +1,120 @@
 const STAY_DOWN = (function() {
 
-  const display = document.createElement('canvas').getContext('2d', { alpha:false });
+  const buffers = {
+
+    background:document.createElement('canvas').getContext('2d', { alpha:false, desynchronized:true }),
+    display:document.createElement('canvas').getContext('2d', { alpha:false })
+
+  };
+  const constructors = {};
+  const images = {};
+  const states = {};
 
   var controller;
   var engine;
   var loader;
-  var renderer;
   var state;
+
+  function changeState(name) {
+
+    if (state) state.deactivate();
+
+    state = getState(name);
+
+    state.activate();
+
+    engine.setState(state);
+
+  };
+
+  function getBuffer(name) { return buffers[name]; }
+  function getConstructor(name) { return constructors[name]; }
+  function getImage(name) { return images[name]; }
+  function getState(name) { return states[name]; }
+
+  function getController() { return controller; }
+  function getEngine() { return engine; }
+  function getLoader() { return loader; }
+
+  function initialize() {
+
+    buffers.display.canvas.width = 256;
+    buffers.display.canvas.height = 256;
+    buffers.display.imageSmoothingEnabled = false;
+
+    loader.loadImages([
+
+      'media/images/diamond.png',
+      'media/images/dominique.png',
+      'media/images/platform.png',
+      'media/images/spike.png',
+      'media/images/tile.png'
+
+    ],
+    
+    function(images_) {
+
+      images.diamond = images_[0];
+      images.dominique = images_[1];
+      images.platform = images_[2];
+      images.spike = images_[3];
+      images.tile = images_[4];
+
+      controller.activate();
+
+      buffers.display.imageSmoothingEnabled = false;
+
+      buffers.background.canvas.width = 256;
+      buffers.background.canvas.height = 256;
+      buffers.background.imageSmoothingEnabled = false;
+
+      for (var x = 240; x > -1; x -= 16) {
+
+        for (var y = 240; y > -1; y -= 16) {
+
+          var random_x = Math.floor(Math.random() * 3) * 16;
+
+          buffers.background.drawImage(images.tile, random_x, 0, 16, 16, x, y, 16, 16);
+
+        }
+
+      }
+  
+      document.body.appendChild(buffers.display.canvas);
+  
+      changeState('run');
+  
+      engine.start();
+
+    });
+
+  }
+
+  function setConstructor(name, $function) { constructors[name] = $function; }
+  function setController(controller_) { controller = controller_; }
+  function setEngine(engine_) { engine = engine_; }
+  function setLoader(loader_) { loader = loader_; }
+  function setState(name, object) { states[name] = object; }
 
   return {
 
-    constructors:{},
-    images: {
+    changeState,
 
-      diamond:undefined,
-      dominique:undefined,
-      platform:undefined
+    getBuffer,
+    getConstructor,
+    getController,
+    getEngine,
+    getImage,
+    getLoader,
+    getState,
 
-    },
-    managers:{},
-    states:{},
+    initialize,
 
-    changeState(state_) {
-
-      if (state) state.deactivate();
-
-      state = state_;
-
-      state.activate();
-
-      engine.setState(state);
-
-    },
-
-    getController() { return controller; },
-    getDisplay() { return display; },
-    getEngine() { return engine; },
-    getLoader() { return loader; },
-    getRenderer() { return renderer; },
-
-    initialize() {
-
-      const {
-
-        images,
-        states: { run },
-
-        changeState
-      
-      } = STAY_DOWN;
-
-      loader.loadImages([
-
-        'media/images/diamond.png',
-        'media/images/dominique.png',
-        'media/images/platform.png',
-        'media/images/spike.png'
-
-      ],
-      
-      function(images_) {
-
-        images.diamond = images_[0];
-        images.dominique = images_[1];
-        images.platform = images_[2];
-        images.spike = images_[3];
-
-        controller.activate();
-    
-        document.body.appendChild(display.canvas);
-    
-        changeState(run);
-    
-        engine.start();
-
-      });
-
-    },
-
-    setController(controller_) { controller = controller_; },
-
-    setEngine(engine_) { engine = engine_; },
-    setLoader(loader_) { loader = loader_; },
-    setRenderer(renderer_) { renderer = renderer_; }
+    setConstructor,
+    setController,
+    setEngine,
+    setLoader,
+    setState
   
   };
 

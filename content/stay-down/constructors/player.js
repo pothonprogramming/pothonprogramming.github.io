@@ -1,6 +1,6 @@
-STAY_DOWN.constructors.Player = (function() {
+STAY_DOWN.setConstructor('Player', (function() {
 
-  const { constructors: { Rectangle2D } } = STAY_DOWN;
+  const Rectangle2D = STAY_DOWN.getConstructor('Rectangle2D');
 
   const Player = function(x, y) {
 
@@ -59,4 +59,4 @@ STAY_DOWN.constructors.Player = (function() {
 
   return Player;
 
-})();
+})());

@@ -1,12 +1,6 @@
-STAY_DOWN.states.pause = (function() {
+STAY_DOWN.setState('pause', (function() {
 
-  const { states,
-  
-    constructors:{ GameState },
-
-    changeState
-
-  } = STAY_DOWN;
+  const changeState = STAY_DOWN.changeState;
 
   const controller = STAY_DOWN.getController();
 
@@ -22,12 +16,12 @@ STAY_DOWN.states.pause = (function() {
       
       controller.setP(false);
       
-      changeState(states.run);
+      changeState('run');
 
     }
   
   }
 
-  return new GameState(activate, deactivate, render, update);
+  return { activate, deactivate, render, update };
 
-})();
+})());

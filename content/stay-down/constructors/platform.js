@@ -1,6 +1,6 @@
-STAY_DOWN.constructors.Platform = (function() {
+STAY_DOWN.setConstructor('Platform', (function() {
 
-  const { constructors: { Rectangle2D } } = STAY_DOWN;
+  const Rectangle2D = STAY_DOWN.getConstructor('Rectangle2D');
 
   const Platform = function(x, y, width, height) {
 
@@ -39,4 +39,4 @@ STAY_DOWN.constructors.Platform = (function() {
 
   return Platform;
 
-})();
+})());
