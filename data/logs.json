@@ -1,5 +1,10 @@
 [
   {
+    "name":"Rumble.com",
+    "note":"I recently discovered Rumble.com which I'm going to use in addition to YouTube. If anyone wants to check out my channel there, click the link at the top right of this page! Stay down is still the latest project and is receiving regular updates, so check back to see the game's progress!",
+    "date":"2020-12-30"
+  },
+  {
     "name":"Stay Down Devlog:",
     "note":"Lately I've been working on a small game I plan to publish on itch.io. The idea is that platforms push you up and if you don't stay down you die. Pretty genious, I know, but the real goal of the project is to share with everyone how it's made. If you follow the videos you'll learn about fixed time step loops, game states, collision detection, and much more. Hopefully by the time I'm finished you'll have enough knowledge to publish your own fully featured game on itch.io.",
     "date":"2020-09-05"
