@@ -3,12 +3,14 @@ const STAY_DOWN = (function() {
   const buffers = {
 
     background:document.createElement('canvas').getContext('2d', { alpha:false, desynchronized:true }),
-    display:document.createElement('canvas').getContext('2d', { alpha:false })
+    display:document.createElement('canvas').getContext('2d', { alpha:false }),
+    text:document.createElement('canvas').getContext('2d', { alpha:false, desynchronized:true })
 
   };
   const constructors = {};
   const images = {};
   const states = {};
+  const tools = {};
 
   var controller;
   var engine;
@@ -35,6 +37,7 @@ const STAY_DOWN = (function() {
   function getController() { return controller; }
   function getEngine() { return engine; }
   function getLoader() { return loader; }
+  function getTool(name) { return tools[name]; }
 
   function initialize() {
 
@@ -42,13 +45,18 @@ const STAY_DOWN = (function() {
     buffers.display.canvas.height = 256;
     buffers.display.imageSmoothingEnabled = false;
 
+    buffers.text.canvas.width = 256;
+    buffers.text.canvas.height = 32;
+    buffers.text.imageSmoothingEnabled = false;
+
     loader.loadImages([
 
       'media/images/diamond.png',
       'media/images/dominique.png',
       'media/images/platform.png',
       'media/images/spike.png',
-      'media/images/tile.png'
+      'media/images/tile.png',
+      'media/images/text.png'
 
     ],
     
@@ -59,18 +67,19 @@ const STAY_DOWN = (function() {
       images.platform = images_[2];
       images.spike = images_[3];
       images.tile = images_[4];
+      images.text = images_[5];
 
       controller.activate();
 
       buffers.display.imageSmoothingEnabled = false;
 
       buffers.background.canvas.width = 256;
-      buffers.background.canvas.height = 256;
+      buffers.background.canvas.height = 224;
       buffers.background.imageSmoothingEnabled = false;
 
       for (var x = 240; x > -1; x -= 16) {
 
-        for (var y = 240; y > -1; y -= 16) {
+        for (var y = 212; y > -1; y -= 16) {
 
           var random_x = Math.floor(Math.random() * 3) * 16;
 
@@ -95,6 +104,7 @@ const STAY_DOWN = (function() {
   function setEngine(engine_) { engine = engine_; }
   function setLoader(loader_) { loader = loader_; }
   function setState(name, object) { states[name] = object; }
+  function setTool(name, object) { tools[name] = object; }
 
   return {
 
@@ -107,6 +117,7 @@ const STAY_DOWN = (function() {
     getImage,
     getLoader,
     getState,
+    getTool,
 
     initialize,
 
@@ -114,7 +125,8 @@ const STAY_DOWN = (function() {
     setController,
     setEngine,
     setLoader,
-    setState
+    setState,
+    setTool
   
   };
 

@@ -4,6 +4,8 @@ STAY_DOWN.setState('run', (function() {
   const getBuffer = STAY_DOWN.getBuffer;
   const getImage = STAY_DOWN.getImage;
 
+  const text = STAY_DOWN.getTool('text');
+
   const Item = STAY_DOWN.getConstructor('Item');
   const Player = STAY_DOWN.getConstructor('Player');
   const Platform = STAY_DOWN.getConstructor('Platform');
@@ -17,29 +19,26 @@ STAY_DOWN.setState('run', (function() {
   const gravity  = 1;
   const friction = 0.8;
 
-  const output = document.createElement('p');
-
   var item_count = 0;
 
-  const ground = {
-
-    top:world_height - 32
-
-  }
+  const ground_top = world_height - 32;
 
   const item = new Item(128, 100, 16, 16);
 
-  const player = new Player(2, ground.top - 32);
+  const player = new Player(2, ground_top - 32);
 
   const platforms = [];
 
   function activate() {
 
-    document.body.appendChild(output);
+    var buffer = getBuffer('text');
+
+    buffer.fillStyle = '#000000';
+    buffer.fillRect(0, 0, 256, 32);
+    
+    text.write(buffer, 0, 6, 248, 'where am i? i need to get out of here! hey, what\'s that diamond thing?');
 
     window.addEventListener('resize', resize);
-
-    output.innerText = "Where am I? I need to get out of here...";
 
     resize();
 
@@ -77,8 +76,6 @@ STAY_DOWN.setState('run', (function() {
 
   function deactivate() {
 
-    document.body.removeChild(output);
-
     window.removeEventListener('resize', resize);
 
   }
@@ -94,9 +91,6 @@ STAY_DOWN.setState('run', (function() {
     display.canvas.style.width = Math.floor(display.canvas.height * scale) + 'px';
 
     const rectangle = display.canvas.getBoundingClientRect();
-
-    output.style.top = (rectangle.top + rectangle.height - 40) + 'px';
-    output.style.left = rectangle.left + 'px';
 
   }
 
@@ -128,8 +122,12 @@ STAY_DOWN.setState('run', (function() {
 
     }
 
+    buffer = getBuffer('text');
+
+    display.drawImage(buffer.canvas, 0, 224);
+
     display.fillStyle = '#202830';
-    display.fillRect(0, ground.top, world_width, 4);
+    display.fillRect(0, ground_top, world_width, 4);
 
   }
 
@@ -157,10 +155,15 @@ STAY_DOWN.setState('run', (function() {
 
     if (player.getTop() < 4) {
 
-      if (item_count === 0) output.innerText = "Ouch! Probably shouldn't touch those spikes.";
-      else output.innerText = "Ouch! Oh, snap! I lost my diamonds!!!";
+      var buffer = getBuffer('text');
 
-      player.y = player.old_y = ground.top - player.height;
+      buffer.fillStyle = '#000000';
+      buffer.fillRect(0, 0, 256, 32);
+
+      if (item_count === 0) text.write(buffer, 0, 6, 248, 'ouch! i need to stay away from those!');
+      else text.write(getBuffer('text'), 0, 6, 248, 'oh, snap! i lost my diamonds!!!');
+
+      player.y = player.old_y = ground_top - player.height;
       player.x = 2;
 
       item_count = 0;
@@ -169,7 +172,7 @@ STAY_DOWN.setState('run', (function() {
 
     player.updatePosition(gravity, friction);
 
-    if (collideTop(player, ground.top)) player.ground();
+    if (collideTop(player, ground_top)) player.ground();
 
     for (var index = platforms.length - 1; index > -1; -- index) {
 
@@ -177,7 +180,7 @@ STAY_DOWN.setState('run', (function() {
 
       platform.moveUp();
 
-      if (platform.y < 0) platform.reset(ground.top);
+      if (platform.y < 0) platform.reset(ground_top);
 
       if (collidePlayerWithPlatform(player, platform)) player.ground(platform.velocity_y);
 
@@ -186,11 +189,16 @@ STAY_DOWN.setState('run', (function() {
     if (collideRectangleWithRectangle(item, player)) {
 
       item.setLeft(Math.random() * (world_width - item.width));
-      item.setTop(Math.random() * (world_height - item.height - (world_height - ground.top)));
+      item.setTop(Math.random() * (world_height - item.height - (world_height - ground_top)));
 
       item_count ++;
 
-      output.innerText = item_count;
+      var buffer = getBuffer('text');
+
+      buffer.fillStyle = '#000000';
+      buffer.fillRect(0, 0, 256, 32);
+    
+      text.write(buffer, 0, 6, 248, item_count.toString());
 
     };
 
@@ -198,7 +206,7 @@ STAY_DOWN.setState('run', (function() {
 
   for (let x = world_width - 20; x > 16; x -= 18) {
 
-    platforms.push(new Platform(x, ground.top, 16, 4));
+    platforms.push(new Platform(x, ground_top, 16, 4));
 
   }
 
