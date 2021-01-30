@@ -1,11 +1,12 @@
-STAY_DOWN.setTool('text', (function() {
+STAY_DOWN.setConstructor('TextTool', function(p = STAY_DOWN) {
 
-  const Frame = STAY_DOWN.getConstructor('Frame');
-  const getImage = STAY_DOWN.getImage;
+  // constructors
+  const Frame = p.getConstructor('Frame');
+  // methods
+  const getImage = p.getImage;
 
   const letter_spacing = 1;
   const line_height = 10;
-  const margin = 2;
   const space_width = 3;
 
   const frames = {
@@ -49,46 +50,46 @@ STAY_DOWN.setTool('text', (function() {
     '!':Frame(211,0,1,9),
     '?':Frame(213,1,5,8,0,1),
     '.':Frame(1,3,1,1,0,8),
-    "'":Frame(4,4,1,2,0,2)
+    "'":Frame(4,4,1,2,0,2),
+    ',':Frame(4,4,1,2,0,8)
 
   };
 
-  return {
+  function write(context, position_x, position_y, width, string, clear = false) {
 
-    write(context, position_x, position_y, width, string) {
+    var start_x = position_x;
 
-      position_x += margin;
+    if (clear) context.clearRect(0, 0, context.canvas.width, context.canvas.height);
 
-      var image = getImage('text');
+    var image = getImage('text');
 
-      var length = string.length;
+    var length = string.length;
 
-      for (var i = 0; i < length; i ++) {
+    for (var i = 0; i < length; i ++) {
 
-        var char = string.charAt(i);
+      var char = string.charAt(i);
 
-        if (char === ' ') { position_x += space_width; continue; }
+      if (char === ' ') { position_x += space_width; continue; }
 
-        var frame = frames[char];
+      var frame = frames[char];
 
-        if (!frame) continue;
+      if (!frame) continue;
 
-        context.drawImage(image, frame.x, frame.y, frame.width, frame.height, position_x + frame.offset_x, position_y + frame.offset_y, frame.width, frame.height);
+      context.drawImage(image, frame.x, frame.y, frame.width, frame.height, position_x + frame.offset_x, position_y + frame.offset_y, frame.width, frame.height);
 
-        position_x += frame.width + letter_spacing;
+      position_x += frame.width + letter_spacing;
 
-        if (position_x > width) {
+      if (position_x > width) {
 
-          position_x = margin;
-          position_y += line_height;
-
-        }
+        position_x = start_x;
+        position_y += line_height;
 
       }
-
 
     }
 
   }
 
-})());
+  return { write };
+
+});

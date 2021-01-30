@@ -5,6 +5,7 @@
   <head>
 
     <meta charset = 'utf-8'>
+    <meta name = 'viewport' content = 'width=device-width'>
 
     <title>Stay Down</title>
 
@@ -30,17 +31,8 @@
 
       canvas {
 
-        image-rendering:pixelated;
         image-rendering:crisp-edges;
-
-      }
-
-      p {
-
-        color:#ffffff;
-        position:fixed;
-        font-weight: 800;
-        font-size:24px;
+        image-rendering:pixelated;
 
       }
 
@@ -48,28 +40,31 @@
 
     <script src='stay-down.js'></script>
 
-    <script src='controller.js'></script>
-    
-    <script src='engine.js'></script>
-    <script src='loader.js'></script>
-
+    <script src='constructors/buffer.js'></script>
     <script src='constructors/rectangle-2d.js'></script>
     <script src='constructors/platform.js'></script>
     <script src='constructors/player.js'></script>
     <script src='constructors/item.js'></script>
+
     <script src='constructors/frame.js'></script>
 
-    <script src='tools/text.js'></script>
+    <script src='constructors/game-states/pause.js'></script>
+    <script src='constructors/game-states/run.js'></script>
+    <script src='constructors/game-states/title.js'></script>
 
-    <script src='game-states/pause.js'></script>
-    <script src='game-states/run.js'></script>
+    <script src='constructors/tools/controller.js'></script>
+    <script src='constructors/tools/engine.js'></script>    
+    <script src='constructors/tools/loader.js'></script>
+    <script src='constructors/tools/state-manager.js'></script>
+    <script src='constructors/tools/text.js'></script>
 
+    <script src='methods/resize-buffer.js'></script>
 
   </head>
 
   <body>
 
-    <script>STAY_DOWN.initialize();</script>
+    <script src='initialize.js'></script>
 
   </body>
 

@@ -1,4 +1,4 @@
-STAY_DOWN.setEngine((function() {
+STAY_DOWN.setConstructor('EngineTool', function() {
 
   var running = false;
 
@@ -35,28 +35,22 @@ STAY_DOWN.setEngine((function() {
   
   }
 
-  return {
-
-    start() {
+  function start() {
   
-      running = true;
-      raf_handle = window.requestAnimationFrame(cycle);
-    
-    },
-    
-    stop() {
-    
-      running = false;
-      window.cancelAnimationFrame(raf_handle);
-    
-    },
-    
-    setState(state_) {
-    
-      state = state_;
-    
-    }
+    running = true;
+    raf_handle = window.requestAnimationFrame(cycle);
+  
+  }
 
-  };
+  function stop() {
+    
+    running = false;
+    window.cancelAnimationFrame(raf_handle);
+  
+  }
 
-})());
+  function setState(state_) { state = state_; }
+
+  return { start, stop, setState };
+
+});
