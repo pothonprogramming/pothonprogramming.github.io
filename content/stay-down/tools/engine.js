@@ -1,4 +1,4 @@
-STAY_DOWN.setConstructor('EngineTool', function() {
+STAY_DOWN.tools.engine = (() => {
 
   var running = false;
 
@@ -53,4 +53,4 @@ STAY_DOWN.setConstructor('EngineTool', function() {
 
   return { start, stop, setState };
 
-});
+})();

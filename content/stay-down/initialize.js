@@ -1,39 +1,23 @@
-(function(p = STAY_DOWN) {
+(() => {
 
-  // constructors
-  const Buffer = p.getConstructor('Buffer');
-  // methods
-  const getBuffer = p.getBuffer;
-  const getImage = p.getImage;
-  const getTool = p.getTool;
-  const setBuffer = p.setBuffer;
-  const setImage = p.setImage;
-  const setState = p.setState;
-  const setTool = p.setTool;
+  const BUFFERS = STAY_DOWN.buffers;
+  const IMAGES = STAY_DOWN.images;
+  const INITIALIZERS = STAY_DOWN.initializers;
+  const TOOLS = STAY_DOWN.tools;
 
-  setBuffer('background', Buffer(256, 256, false, true));
-  setBuffer('display', Buffer(256, 256, false, false));
-  setBuffer('spikes', Buffer(256, 8, true, true));
-  setBuffer('text', Buffer(0, 0, true, true));
-  setBuffer('text-box', Buffer(256, 32, false, true));
+  const Buffer = STAY_DOWN.utilities.Buffer;
 
-  setTool('controller', p.getConstructor('ControllerTool')());
-  setTool('engine', p.getConstructor('EngineTool')());
-  setTool('loader', p.getConstructor('LoaderTool')());
-  setTool('state', p.getConstructor('StateTool')());
-  setTool('text', p.getConstructor('TextTool')());
+  INITIALIZERS.colliderUtility();
+  INITIALIZERS.itemUtility();
+  INITIALIZERS.platformUtility();
+  INITIALIZERS.playerUtility();
 
-  // States have to be set last because they require tools, buffers, etc. to be defined.
-  setState('pause', p.getConstructor('PauseState')());
-  setState('run', p.getConstructor('RunState')());
-  setState('title', p.getConstructor('TitleState')());
-
-  document.body.appendChild(getBuffer('display').canvas);
+  INITIALIZERS.stateManagerTool();
 
   // I have no need to ever reference this again, so I'm defining it here.
   function resize(event) {
 
-    const display = getBuffer('display');
+    const display = BUFFERS.display;
     
     const width_ratio = document.documentElement.clientWidth / display.canvas.width;
     const height_ratio = document.documentElement.clientHeight / display.canvas.height;
@@ -47,10 +31,8 @@
 
   window.addEventListener('resize', resize);
 
-  resize();
-
   // load all the images
-  getTool('loader').loadImages([
+  TOOLS.loader.loadImages([
 
     'media/images/diamond.png',
     'media/images/dominique.png',
@@ -62,19 +44,34 @@
 
   ],
   // the callback function to handle the images once they're loaded  
-  function(images) {
+  function(images_) {
 
-    setImage('diamond', images[0]);
-    setImage('dominique', images[1]);
-    setImage('platform', images[2]);
-    setImage('spike', images[3]);
-    setImage('tile', images[4]);
-    setImage('text', images[5]);
-    setImage('text-box', images[6]);
+    IMAGES.diamond = images_[0];
+    IMAGES.dominique = images_[1];
+    IMAGES.platform = images_[2];
+    IMAGES.spike = images_[3];
+    IMAGES.tile = images_[4];
+    IMAGES.text = images_[5];
+    IMAGES.text_box = images_[6];
+
+    INITIALIZERS.textTool(); // Uses the text image, so must be initialized after loading the text image.
+
+    BUFFERS.background = Buffer.create(256, 256, false, true);
+    BUFFERS.display = Buffer.create(256, 256, false, false);
+    BUFFERS.spikes = Buffer.create(256, 8, true, true);
+    BUFFERS.text = Buffer.create(0, 0, true, true);
+    BUFFERS.text_box = Buffer.create(256, 32, false, true);
+
+    // These use the text tool as well as some buffers, so we have to initialize them after the text tool.
+    INITIALIZERS.runState();
+    INITIALIZERS.pauseState();
+    INITIALIZERS.titleState();
+
+    document.body.appendChild(BUFFERS.display.canvas);
 
     // once we have images, we can set up buffer images
-    var buffer = getBuffer('background');
-    var image = getImage('tile');
+    var buffer = BUFFERS.background;
+    var image = IMAGES.tile;
 
     var x, y;
 
@@ -86,13 +83,13 @@
 
     }
 
-    buffer = getBuffer('spikes');
-    image = getImage('spike');
+    buffer = BUFFERS.spikes;
+    image = IMAGES.spike;
 
-    for(x = 240; x > -1; x -= 16) buffer.drawImage(image, x, 0);
+    for (x = 240; x > -1; x -= 16) buffer.drawImage(image, x, 0);
 
-    buffer = getBuffer('text-box');
-    image = getImage('text-box');
+    buffer = BUFFERS.text_box;
+    image = IMAGES.text_box;
 
     buffer.drawImage(image, 32, 0, 16, 28, 240, 0, 16, 28);
 
@@ -100,11 +97,13 @@
 
     buffer.drawImage(image, 0, 0, 16, 28, 0, 0, 16, 28);
 
-    getTool('controller').activate();
+    resize();
+
+    TOOLS.controller.activate();
   
-    getTool('state').change('title');
+    TOOLS.state_manager.change('title');
   
-    getTool('engine').start();
+    TOOLS.engine.start();
 
   });
 

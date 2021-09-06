@@ -1,6 +1,6 @@
-STAY_DOWN.setConstructor('ControllerTool', function() {
+STAY_DOWN.tools.controller = (() => {
 
-  function Input() { return { active:false, state:false }; }
+  const Input = () => ({ active:false, state:false });
 
   const keys = {
 
@@ -43,4 +43,4 @@ STAY_DOWN.setConstructor('ControllerTool', function() {
 
   return { activate, getKey, setKey };
 
-});
+})();

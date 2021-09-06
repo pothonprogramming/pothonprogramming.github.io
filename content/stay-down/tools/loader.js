@@ -1,4 +1,4 @@
-STAY_DOWN.setConstructor('LoaderTool', function() {
+STAY_DOWN.tools.loader = (() => {
 
   function loadImages(urls, callback) {
 
@@ -33,4 +33,4 @@ STAY_DOWN.setConstructor('LoaderTool', function() {
 
   return { loadImages };
 
-});
+})();
